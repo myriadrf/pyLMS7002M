@@ -42,6 +42,17 @@ Then select the LimeSDR and libusb-win32 from drop-down lists and click on Repla
 
 ![Zadig select LimeSDR-USB](/images/LimeSDR-USB.jpg)
 
+## Examples
+
+* basic
+** Find LimeSDR
+** Find LMS7002EVB
+** LimeSDR Tx CW
+** LimeSDR Tx CW power out sweep
+** LimeSDR Tx NCO 
+** LimeSDR Tx NCO hopping
+* Vector Network Analyser (VNA)
+
 ## Licensing
 
 pyLMS7002M is copyright 2016 Lime Microsystems and provided under the Apache 2.0 License.
