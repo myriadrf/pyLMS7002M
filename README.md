@@ -45,12 +45,12 @@ Then select the LimeSDR and libusb-win32 from drop-down lists and click on Repla
 ## Examples
 
 * basic
-** Find LimeSDR
-** Find LMS7002EVB
-** LimeSDR Tx CW
-** LimeSDR Tx CW power out sweep
-** LimeSDR Tx NCO 
-** LimeSDR Tx NCO hopping
+  * Find LimeSDR
+  * Find LMS7002EVB
+  * LimeSDR Tx CW
+  * LimeSDR Tx CW power out sweep
+  * LimeSDR Tx NCO 
+  * LimeSDR Tx NCO hopping
 * Vector Network Analyser (VNA)
 
 ## Licensing
