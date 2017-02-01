@@ -36,13 +36,14 @@ class LMS7002_mSPI(LMS7002_base):
     def _readHex(self, hexFileName, isString=False):
         """
         Read Intel hex file.
-        Returns a 8192 bytes long list containing the MCU program.
+        Returns a 16384 or 8192 bytes long list containing the MCU program.
         """
         if not isString:
             inFile = open(hexFileName, 'r')
         else:
             inFile = hexFileName.split('\n')
-        ret = [0]*8192
+        ret = [0]*16384
+        maxAddr = 0
         for line in inFile:
             line = line.strip()
             if line=='':
@@ -64,9 +65,13 @@ class LMS7002_mSPI(LMS7002_base):
             if ckSum != lineData[len(lineData)-1]:
                 raise ValueError("Checksum error in line : "+line)
             for i in range(0, len(data)):
+                if offset+i>maxAddr:
+                    maxAddr = offset+i
                 ret[offset+i] = data[i]
         if not isString:
             inFile.close()
+        if maxAddr<8192:
+            ret = ret[:8192]    # Discard last 8192 bytes, since they are not used
         return ret
 
     def loadHex(self, hexFileName, mode='SRAM', isString=False):
