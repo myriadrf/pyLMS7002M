@@ -8,6 +8,8 @@
 #**************************************************************
 
 from LMS7002_REGDESC import *
+from LMS7002_REGDESC_MR3 import *
+from LMS7002_regDataStructs import *
 from LMS7002_regDataStructs import *
 
 # Import core chip modules
@@ -31,6 +33,7 @@ from LMS7002_CGEN import *
 from LMS7002_XBUF import *
 from LMS7002_CDS import *
 from LMS7002_mSPI import *
+from LMS7002_DCCAL import *
 
 # Import support modules
 from LMS7002_calibration import *
@@ -52,7 +55,17 @@ class LMS7002(object):
         self.fRef = fRef    # Reference frequency
         self._SPIImmediate = True
         self.verbose = verbose
-        regDefList = LMS7002_REGDESC.split('\n')
+        
+        self.chipIDMR2 = 0x3840
+        self.chipIDMR3 = 0x3841
+        
+        self.chipID = self.SPIreadFn([0x2F])[0]
+        if self.chipID == self.chipIDMR2:
+            regDefList = LMS7002_REGDESC.split('\n')
+        elif self.chipID == self.chipIDMR3:
+            regDefList = LMS7002_REGDESC_MR3.split('\n')
+        else:
+            raise ValueError("Unsupported chip. CHIP ID = "+str(self.chipID))
         regParser = regDescParser(regDefList, self)
         self.regDesc = regParser.getRegisterDefinition()
         self.MACReg = self.getRegisterByAddress(0x20)
@@ -61,7 +74,6 @@ class LMS7002(object):
         #
         # Initialize core chip modules
         #
-        
         self.CHIP  = LMS7002_CHIP(self)
         self.LimeLight = LMS7002_LimeLight(self)
         self.IO    = LMS7002_IO(self)
@@ -101,6 +113,8 @@ class LMS7002(object):
         self.XBUF  = LMS7002_XBUF(self)
         self.CDS   = LMS7002_CDS(self)
         self.mSPI  = LMS7002_mSPI(self)
+        self.DCCAL = LMS7002_DCCAL(self)
+        
         
         #
         # Initialize support modules

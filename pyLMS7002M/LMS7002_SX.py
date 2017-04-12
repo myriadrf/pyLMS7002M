@@ -680,6 +680,54 @@ class LMS7002_SX(LMS7002_base):
     #
     # SXT_SXR_PFDCP (0x0122)
     #
+
+    # RZ_CTRL<1:0>
+    @property 
+    def RZ_CTRL(self):
+        """
+        Get the value of RZ_CTRL<1:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:        
+            return self._readReg('PFDCP', 'RZ_CTRL<1:0>')
+        else:
+            raise ValueError("Bitfield RZ_CTRL<1:0> is not supported on chip version "+str(self.chip.chipID))
+
+
+    @RZ_CTRL.setter
+    def RZ_CTRL(self, value):
+        """
+        Set the value of RZ_CTRL<1:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0, 1, 2, 3]:
+                raise ValueError("Value must be [0,1, 2, 3]")
+            self._writeReg('PFDCP', 'RZ_CTRL<1:0>', val)
+        else:
+            raise ValueError("Bitfield RZ_CTRL<1:0> is not supported on chip version "+str(self.chip.chipID))
+
+    # CMPLO_CTRL
+    @property 
+    def CMPLO_CTRL(self):
+        """
+        Get the value of CMPLO_CTRL
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:        
+            return self._readReg('PFDCP', 'CMPLO_CTRL')
+        else:
+            raise ValueError("Bitfield CMPLO_CTRL is not supported on chip version "+str(self.chip.chipID))
+
+
+    @CMPLO_CTRL.setter
+    def CMPLO_CTRL(self, value):
+        """
+        Set the value of CMPLO_CTRL
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0, 1]:
+                raise ValueError("Value must be [0,1]")
+            self._writeReg('PFDCP', 'CMPLO_CTRL', val)
+        else:
+            raise ValueError("Bitfield CMPLO_CTRL is not supported on chip version "+str(self.chip.chipID))
     
     # REVPH_PFD
     @property 

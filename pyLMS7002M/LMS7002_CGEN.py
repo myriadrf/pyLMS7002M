@@ -555,6 +555,33 @@ class LMS7002_CGEN(LMS7002_base):
     # CGEN_SXCFG2 (0x008B)
     #
 
+    # CMPLO_CTRL_CGEN
+    @property 
+    def CMPLO_CTRL_CGEN(self):
+        """
+        Get the value of CMPLO_CTRL_CGEN
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:        
+            return self._readReg('SXCFG2', 'CMPLO_CTRL_CGEN')
+        else:
+            raise ValueError("Bitfield CMPLO_CTRL_CGEN is not supported on chip version "+str(self.chip.chipID))
+
+    @CMPLO_CTRL_CGEN.setter
+    def CMPLO_CTRL_CGEN(self, value):
+        """
+        Set the value of CMPLO_CTRL_CGEN
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0, 1]:
+                raise ValueError("Value must be [0,1]")
+            if value==0 or value=='OFF':
+                val = 0
+            else:
+                val = 1
+            self._writeReg('SXCFG2', 'CMPLO_CTRL_CGEN', val)
+        else:
+            raise ValueError("Bitfield CMPLO_CTRL_CGEN is not supported on chip version "+str(self.chip.chipID))
+
     # ICT_VCO_CGEN<4:0>
     @property 
     def ICT_VCO_CGEN(self):

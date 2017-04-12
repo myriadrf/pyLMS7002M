@@ -2460,6 +2460,30 @@ class LMS7002_BIAS(LMS7002_base):
     #
     # BIAS_CFG20 (0x00A6)
     #
+
+    # ISINK_SPIBUFF<2:0>
+    @property 
+    def ISINK_SPIBUFF(self):
+        """
+        Get the value of ISINK_SPIBUFF<2:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:        
+            return self._readReg('CFG20', 'ISINK_SPIBUFF<2:0>')
+        else:
+            raise ValueError("Bitfield ISINK_SPIBUFF<2:0> is not supported on chip version "+str(self.chip.chipID))
+            
+
+    @ISINK_SPIBUFF.setter
+    def ISINK_SPIBUFF(self, value):
+        """
+        Set the value of ISINK_SPIBUFF<2:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:                
+            if value not in range(0,8):
+                raise ValueError("Value must be [0,1]")
+            self._writeReg('CFG20', 'ISINK_SPIBUFF<2:0>', value)
+        else:
+            raise ValueError("Bitfield ISINK_SPIBUFF<2:0> is not supported on chip version "+str(self.chip.chipID))
     
     # SPDUP_LDO_SPIBUF
     @property 

@@ -228,6 +228,102 @@ class LMS7002_IO(LMS7002_base):
     # IOCFG1 (0x0022)
     #
 
+    # LML2_TRXIQPULSE
+    @property 
+    def LML2_TRXIQPULSE(self):
+        """
+        Get the value of LML2_TRXIQPULSE
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('IOCFG1', 'LML2_TRXIQPULSE')
+        else:
+            raise ValueError("Bitfield LML2_TRXIQPULSE is not supported on chip version "+str(self.chip.chipID))
+
+
+    @LML2_TRXIQPULSE.setter
+    def LML2_TRXIQPULSE(self, value):
+        """
+        Set the value of LML2_TRXIQPULSE
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0, 1]:
+                raise ValueError("Value must be [0,1]")
+            self._writeReg('IOCFG1', 'LML2_TRXIQPULSE', value)
+        else:
+            raise ValueError("Bitfield LML2_TRXIQPULSE is not supported on chip version "+str(self.chip.chipID))
+
+    # LML2_SISODDR
+    @property 
+    def LML2_SISODDR(self):
+        """
+        Get the value of LML2_SISODDR
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('IOCFG1', 'LML2_SISODDR')
+        else:
+            raise ValueError("Bitfield LML2_SISODDR is not supported on chip version "+str(self.chip.chipID))
+
+
+    @LML2_SISODDR.setter
+    def LML2_SISODDR(self, value):
+        """
+        Set the value of LML2_SISODDR
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0, 1]:
+                raise ValueError("Value must be [0,1]")
+            self._writeReg('IOCFG1', 'LML2_SISODDR', value)
+        else:
+            raise ValueError("Bitfield LML2_SISODDR is not supported on chip version "+str(self.chip.chipID))
+
+    # LML1_TRXIQPULSE
+    @property 
+    def LML1_TRXIQPULSE(self):
+        """
+        Get the value of LML1_TRXIQPULSE
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('IOCFG1', 'LML1_TRXIQPULSE')
+        else:
+            raise ValueError("Bitfield LML1_TRXIQPULSE is not supported on chip version "+str(self.chip.chipID))
+
+
+    @LML1_TRXIQPULSE.setter
+    def LML1_TRXIQPULSE(self, value):
+        """
+        Set the value of LML1_TRXIQPULSE
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0, 1]:
+                raise ValueError("Value must be [0,1]")
+            self._writeReg('IOCFG1', 'LML1_TRXIQPULSE', value)
+        else:
+            raise ValueError("Bitfield LML1_TRXIQPULSE is not supported on chip version "+str(self.chip.chipID))
+
+    # LML1_SISODDR
+    @property 
+    def LML1_SISODDR(self):
+        """
+        Get the value of LML1_SISODDR
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('IOCFG1', 'LML1_SISODDR')
+        else:
+            raise ValueError("Bitfield LML1_SISODDR is not supported on chip version "+str(self.chip.chipID))
+
+
+    @LML1_SISODDR.setter
+    def LML1_SISODDR(self, value):
+        """
+        Set the value of LML1_SISODDR
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0, 1]:
+                raise ValueError("Value must be [0,1]")
+            self._writeReg('IOCFG1', 'LML1_SISODDR', value)
+        else:
+            raise ValueError("Bitfield LML1_SISODDR is not supported on chip version "+str(self.chip.chipID))
+
     # DIQ2_DS
     @property 
     def DIQ2_DS(self):

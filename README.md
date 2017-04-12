@@ -26,9 +26,52 @@ Module installation can be verified from Python:
 
 If there is no error, the module is correctly installed.
 
+
+## USB communications
+
+USB communication can be established in two ways.
+
+### Direct
+
+Python communicates directly to the USB driver. This is the simplest and recommended option.
+
+* Pros: Lightweight solution, simple installation
+* Cons: Windows users - other applications that are communicating with LimeSDR (such as
+LimeSuiteGUI and PothosSDR) use LimeSDR-USB Windows driver. The pyLMS7002M cannot use this driver. This
+means that the user has to change the driver each time he/she switches from using
+pyLMS7002M library to using e.g. LimeSuiteGUI, and vice versa.
+
+With Linux use there are no problems, since all applications use the same driver.-
+
+### Via LimeAPI
+
+Python communicates to the LimeAPI library, which communicates to the USB driver.
+
+* Pros: Windows users: No need to change the drivers. LimeSDR-USB Windows drivers can be used both for pyPLS7002M library, and
+other applications such as LimeSuiteGUI and PothosSDR.
+* Cons: More complicated installation and setup.
+
+With Linux use there is no advantage, since all applications use the same driver.
+
+## Drivers
+
+### Linux
+
+Communication is via libusb and can be direct or via the LimeAPI.
+
 ### Windows
 
-The default driver Windows drivers for LimeSDR boards are not compatible with the Python module
+#### USB communication via LimeAPI
+
+This option is recommended only for Windows users that frequently use both pyLMS7002M python
+library and other applications for communication with LimeSDR, such as LimeSuiteGUI, or
+PothosSDR.
+
+### USB direct communication
+
+This is the preferred option.
+
+The default Windows drivers for LimeSDR boards are not compatible with the Python module
 pyUSB. Drivers can be changed by using the Zadig software.
 
 * [Windows Vista/Win7/Win8 32/64](http://zadig.akeo.ie/downloads/zadig_2.1.0.exe)
@@ -55,4 +98,4 @@ Then select the LimeSDR and libusb-win32 from drop-down lists and click on Repla
 
 ## Licensing
 
-pyLMS7002M is copyright 2016 Lime Microsystems and provided under the Apache 2.0 License.
+pyLMS7002M is copyright 2016, 2017 Lime Microsystems and provided under the Apache 2.0 License.

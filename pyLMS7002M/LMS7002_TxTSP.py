@@ -468,6 +468,29 @@ class LMS7002_TxTSP(LMS7002_base):
             val = 1
         self._writeReg('CMIXBYP', 'CMIX_SC', val)
 
+    # CMIX_GAIN2
+    @property 
+    def CMIX_GAIN2(self):
+        """
+        Get the value of CMIX_GAIN2
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('CMIXBYP', 'CMIX_GAIN2')
+        else:
+            raise ValueError("Bitfield CMIX_GAIN2 is not supported on chip version "+str(self.chip.chipID))
+
+    @CMIX_GAIN2.setter
+    def CMIX_GAIN2(self, value):
+        """
+        Set the value of CMIX_GAIN2
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0,1]:
+                raise ValueError("Value must be [0,1]")
+            self._writeReg('CMIXBYP', 'CMIX_GAIN2', val)
+        else:
+            raise ValueError("Bitfield CMIX_GAIN2 is not supported on chip version "+str(self.chip.chipID))
+
     # CMIX_BYP
     @property 
     def CMIX_BYP(self):

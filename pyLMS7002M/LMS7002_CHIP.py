@@ -313,6 +313,29 @@ class LMS7002_CHIP(LMS7002_base):
     # EN_DIR (0x0081)
     #
 
+    # TRX_GAIN_SRC
+    @property 
+    def TRX_GAIN_SRC(self):
+        """
+        Get the value of TRX_GAIN_SRC
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:        
+            return self._readReg('EN_DIR', 'TRX_GAIN_SRC')
+        else:
+            raise ValueError("Bitfield TRX_GAIN_SRC is not supported on chip version "+str(self.chip.chipID))
+
+    @TRX_GAIN_SRC.setter
+    def TRX_GAIN_SRC(self, value):
+        """
+        Set the value of TRX_GAIN_SRC
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0, 1]:
+                raise ValueError("Value must be [0,1]")
+            self._writeReg('EN_DIR', 'TRX_GAIN_SRC', value)        
+        else:
+            raise ValueError("Bitfield TRX_GAIN_SRC is not supported on chip version "+str(self.chip.chipID))
+
     # EN_DIR_LDO
     @property 
     def EN_DIR_LDO(self):

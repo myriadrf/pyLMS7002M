@@ -60,6 +60,34 @@ class LMS7002_RxTSP(LMS7002_base):
             val = 1    
         self._writeReg('CFG', 'CAPSEL<1:0>', val)
 
+    # CAPSEL_ADC
+    @property 
+    def CAPSEL_ADC(self):
+        """
+        Get the value of CAPSEL_ADC
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('CFG', 'CAPSEL_ADC')
+        else:
+            raise ValueError("Bitfield CAPSEL_ADC is not supported on chip version "+str(self.chip.chipID))
+
+    @CAPSEL_ADC.setter
+    def CAPSEL_ADC(self, value):
+        """
+        Set the value of CAPSEL_ADC
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0,1, 'IN', 'OUT']:
+                raise ValueError("Value must be [0,1, 'IN', 'OUT']")
+            if value==0 or value=='IN':
+                val = 0
+            else:
+                val = 1    
+            self._writeReg('CFG', 'CAPSEL_ADC', val)
+        else:
+            raise ValueError("Bitfield CAPSEL_ADC is not supported on chip version "+str(self.chip.chipID))
+
+
     # TSGFC
     @property 
     def TSGFC(self):
@@ -307,6 +335,31 @@ class LMS7002_RxTSP(LMS7002_base):
     #
     # RXTSP_DCCORR_AVG (0x0404)
     #
+
+    # HBD_DLY
+    @property 
+    def HBD_DLY(self):
+        """
+        Get the value of HBD_DLY<2:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('DCCORRAVG', 'HBD_DLY<2:0>')
+        else:
+            raise ValueError("Bitfield HBD_DLY<2:0> is not supported on chip version "+str(self.chip.chipID))
+
+
+    @HBD_DLY.setter
+    def HBD_DLY(self, value):
+        """
+        Set the value of HBD_DLY<2:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if not(0 <= value <= 7):
+                raise ValueError("Value must be [0..7]")
+            self._writeReg('DCCORRAVG', 'HBD_DLY<2:0>', value)
+        else:
+            raise ValueError("Bitfield HBD_DLY<2:0> is not supported on chip version "+str(self.chip.chipID))
+
 
     # DCCORR_AVG<2:0>
     @property 
@@ -594,6 +647,29 @@ class LMS7002_RxTSP(LMS7002_base):
             val = 1
         self._writeReg('CMIXBYP', 'CMIX_SC', val)
 
+    # CMIX_GAIN2
+    @property 
+    def CMIX_GAIN2(self):
+        """
+        Get the value of CMIX_GAIN2
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('CMIXBYP', 'CMIX_GAIN2')
+        else:
+            raise ValueError("Bitfield CMIX_GAIN2 is not supported on chip version "+str(self.chip.chipID))
+
+    @CMIX_GAIN2.setter
+    def CMIX_GAIN2(self, value):
+        """
+        Set the value of CMIX_GAIN2
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0,1]:
+                raise ValueError("Value must be [0,1]")
+            self._writeReg('CMIXBYP', 'CMIX_GAIN2', val)
+        else:
+            raise ValueError("Bitfield CMIX_GAIN2 is not supported on chip version "+str(self.chip.chipID))
+
     # CMIX_BYP
     @property 
     def CMIX_BYP(self):
@@ -815,15 +891,29 @@ class LMS7002_RxTSP(LMS7002_base):
         
     @property 
     def RSSI(self):
-        return self.CAPD
+        oldVal = self.CAPSEL
+        self.CAPSEL = 'RSSI'
+        ret = self.CAPD
+        self.CAPSEL = oldVal
+        return ret
         
     @property 
     def ADCIQ(self):
         # Returns (I,Q)
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if self.CAPSEL_ADC == 0:
+                nBits = 10
+            else:
+                nBits = 16
+        else:
+            nBits = 10
+        oldVal = self.CAPSEL
+        self.CAPSEL = 'ADC'
         self.CAPTURE = 0
         self.CAPTURE = 1
         self.CAPTURE = 0    
-        CAPDH = self.CAPDH
-        CAPDL = self.CAPDL
+        CAPDH = self.twosComplementToInt(self.CAPDH,nBits)
+        CAPDL = self.twosComplementToInt(self.CAPDL,nBits)
+        self.CAPSEL = oldVal
         return (CAPDL, CAPDH)
 

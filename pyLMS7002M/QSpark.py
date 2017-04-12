@@ -1,143 +1,103 @@
 #***************************************************************
-#* Name:      LimeSDR.py
-#* Purpose:   Class implementing LimeSDR functions
+#* Name:      QSpark.py
+#* Purpose:   Class implementing QSpark functions
 #* Author:    Lime Microsystems ()
 #* Created:   2016-11-14
 #* Copyright: Lime Microsystems (limemicro.com)
 #* License:
 #**************************************************************
 
-from weakproxy import *
 from copy import copy
 from LMS7002 import *
 from ADF4002 import *
 from Si5351 import *
 from boardUSB import *
-from LimeSDR_FPGA import *
+from QSpark_FPGA import *
 from timeit import default_timer as timer
 
-# Try to import the LimeAPI library
-try:
-    from cyLimeLib import *
-    cyLimeLibPresent = True
-except:
-    cyLimeLibPresent = False    
-    
-class LimeSDR(object):
+class QSpark(object):
 
-    def __init__(self, fRef = 30.72e6, verbose=0, usbBackend=None):
+    def __init__(self, fRef = 30.72e6, verbose=0):
         """
-        Initialize communication with LimeSDR.
-        The value of usbBackend determines the type of connection:
-            None - try with LimeAPI, fallback to PyUSB
-            LimeAPI - only use LimeAPI
-            PyUSB - only use PyUSB
+        Initialize communication with QSpark
         """
-        if usbBackend==None:
-            if cyLimeLibPresent:
-                self.usbBackend = "LimeAPI"
-            else:
-                self.usbBackend = "PyUSB"
-        else:
-            if usbBackend == "LimeAPI" or usbBackend=="PyUSB":
-                self.usbBackend = usbBackend
-            else:
-                raise ValueError("Unknown USB backend given : "+str(usbBackend))
-        if self.usbBackend=="PyUSB":
-            self.usb = boardUSB()
-            dev = self.findLMS7002(self.usbBackend)
-            if dev is None:
-                raise ValueError("LimeSDR not found")
-            self.usb.setDevice(dev)
-        else:
-            boards = cyLimeLib.getDeviceList()
-            if len(boards)==0:
-                raise ValueError("LimeSDR not found")
-            self.cyDev = None
-            for i in range(0,len(boards)):
-                if "LimeSDR" in boards[i]:
-                    self.cyDev = cyLimeLib(boards[i])
-                    break
-            if self.cyDev==None:
-                raise ValueError("LimeSDR not found")            
-            self.usb = self.cyDev
-            
+        self.usb = boardUSB()
+        dev = self.findLMS7002()
+        if dev is None:
+            raise ValueError("QSpark not found")
+        self.usb.setDevice(dev)
         #self.usb.setConfiguration()
         self.verbose = verbose
         self.bulkControl = False
         self.fRef = fRef # reference frequency
         FW_VER, DEV_TYPE, LMS_PROTOCOL_VER, HW_VER, EXP_BOARD = self.getInfo()
-        if DEV_TYPE!=14:
+        if DEV_TYPE!=16:
             ret = "FW_VER           : "+str(FW_VER)+"\n"
             ret += "DEV_TYPE         : "+str(DEV_TYPE)+"\n"
             ret += "LMS_PROTOCOL_VER : " + str(LMS_PROTOCOL_VER)+"\n"
             ret += "HW_VER           : " + str(HW_VER)+"\n"
             ret += "EXP_BOARD        : " + str(EXP_BOARD)+"\n"
-            raise ValueError("The board is not LimeSDR.\nBoard info:\n"+ret)
+            raise ValueError("The board is not QSpark.\nBoard info:\n"+ret)
         if verbose>0:
             self.printInfo()
         
         #
         # Check if board has bulk transfers
         #
-        if self.usbBackend=="PyUSB":        
-            endpoints = self.usb.getEndpoints()
-            
-            # Bulk control endpoint addresses
-            self.ctrlBulkOutAddr = 0x0F
-            self.ctrlBulkInAddr = 0x8F
-            
-            if (self.ctrlBulkOutAddr in endpoints) and (self.ctrlBulkInAddr in endpoints):
-                self.bulkControl = True     # LMS7002M is controlled via bulk USB transfers
-                if HW_VER>2:
-                    # HW version > 1.2
-                    self.bulkCommands = [
-                        self.getCommandNumber("CMD_BRDSPI_WR"), 
-                        self.getCommandNumber("CMD_BRDSPI_RD"),
-                        self.getCommandNumber("CMD_LMS7002_WR"), 
-                        self.getCommandNumber("CMD_LMS7002_RD"),
-                        self.getCommandNumber("CMD_ANALOG_VAL_WR"), 
-                        self.getCommandNumber("CMD_ANALOG_VAL_RD"),
-                        self.getCommandNumber("CMD_ADF4002_WR"),
-                        self.getCommandNumber("CMD_LMS7002_RST"),
-                        self.getCommandNumber("CMD_PROG_MCU")
-                    ]
-                else:
-                    self.bulkCommands = [
-                        self.getCommandNumber("CMD_BRDSPI_WR"), 
-                        self.getCommandNumber("CMD_BRDSPI_RD"),
-                        self.getCommandNumber("CMD_LMS7002_WR"), 
-                        self.getCommandNumber("CMD_LMS7002_RD"),
-                        self.getCommandNumber("CMD_LMS7002_RST")
-                    ]
+        
+        endpoints = self.usb.getEndpoints()
+        
+        # Bulk control endpoint addresses
+        self.ctrlBulkOutAddr = 0x0F
+        self.ctrlBulkInAddr = 0x8F
+        
+        if (self.ctrlBulkOutAddr in endpoints) and (self.ctrlBulkInAddr in endpoints):
+            self.bulkControl = True     # LMS7002M is controlled via bulk USB transfers
+            if HW_VER>2:
+                # HW version > 1.2
+                self.bulkCommands = [
+                    self.getCommandNumber("CMD_BRDSPI_WR"), 
+                    self.getCommandNumber("CMD_BRDSPI_RD"),
+                    self.getCommandNumber("CMD_LMS7002_WR"), 
+                    self.getCommandNumber("CMD_LMS7002_RD"),
+                    self.getCommandNumber("CMD_ANALOG_VAL_WR"), 
+                    self.getCommandNumber("CMD_ANALOG_VAL_RD"),
+                    self.getCommandNumber("CMD_ADF4002_WR"),
+                    self.getCommandNumber("CMD_LMS7002_RST"),
+                    self.getCommandNumber("CMD_PROG_MCU")
+                ]
             else:
-                self.bulkControl = False    # LMS7002M is controlled via control USB transfers
+                self.bulkCommands = [
+                    self.getCommandNumber("CMD_BRDSPI_WR"), 
+                    self.getCommandNumber("CMD_BRDSPI_RD"),
+                    self.getCommandNumber("CMD_LMS7002_WR"), 
+                    self.getCommandNumber("CMD_LMS7002_RD"),
+                    self.getCommandNumber("CMD_LMS7002_RST")
+                ]
+        else:
+            self.bulkControl = False    # LMS7002M is controlled via control USB transfers
         
         #
         # Initialize on-board chips
         #
-        if self.usbBackend=="PyUSB":
-            self.Si5351 = Si5351(self.Si5351Progam)
-            self.Si5351.uploadLimeSDRConfig()
-        self.LMS7002 = LMS7002(SPIwriteFn=Proxy(self.LMS7002_Write), SPIreadFn=Proxy(self.LMS7002_Read)
-                               , verbose=verbose, MCUProgram=Proxy(self.MCUProgram), fRef = self.fRef)
+        
+        self.Si5351 = Si5351(self.Si5351Progam)
+        self.Si5351.uploadLimeSDRConfig()
+        self.LMS7002 = LMS7002(SPIwriteFn=self.LMS7002_Write, SPIreadFn=self.LMS7002_Read, verbose=verbose, MCUProgram=self.MCUProgram, fRef = self.fRef)
         self.LMS7002.MIMO = 'MIMO'
-        self.ADF4002 = ADF4002(Proxy(self.ADF4002Program))
-        self.FPGA = LimeSDR_FPGA(spiRead=Proxy(self.BoardSPI_Read), spiWrite=Proxy(self.BoardSPI_Write), usb=self.usb)
+        self.ADF4002 = ADF4002(self.ADF4002Program)
+        self.FPGA = QSpark_FPGA(spiRead=self.BoardSPI_Read, spiWrite=self.BoardSPI_Write, usb=self.usb)
+        
         
     def __del__(self):
         """
-        Close communication with LimeSDR
+        Close communication with QSpark
         """
-        if self.usbBackend=="LimeAPI":
-            del self.cyDev
+        pass
     
     @staticmethod
-    def findLMS7002(backend="PyUSB"):
-        if not cyLimeLibPresent or backend=="PyUSB":
-            return boardUSB.findLMS7002()
-        else:
-            return cyLimeLib.getDeviceList()
+    def findLMS7002():
+        return boardUSB.findLMS7002()
             
     def log(self, logMsg):
         print logMsg
@@ -209,43 +169,35 @@ class LimeSDR(object):
 
     def sendCommand(self, command, nDataBlocks=0, periphID=0, data=[]):
         """
-        Send the command to LimeSDR.
+        Send the command to QSpark.
         Function returns (status, data)
         """
-        
-        if self.usbBackend=="PyUSB":
-            tmp = [0]*64
-            tmp[0] = command
-            tmp[1] = 0
-            tmp[2] = nDataBlocks
-            tmp[3] = periphID
-            nData = len(data)
-            if nData>56:
-                raise ValueError("Length of data must be less than 56, "+str(nData)+" bytes given")
-            for i in range(0, nData):
-                tmp[8+i] = data[i]
-            if self.verbose>2:
-                self.log("sendCommand:Write    : "+str(tmp))
-            toSend = tmp
-            if (self.bulkControl==True) and (command in self.bulkCommands):
-                self.usb.bulkWrite(self.ctrlBulkOutAddr, toSend)
-                tmp = self.usb.bulkRead(self.ctrlBulkInAddr, 64)
-            else:        
-                self.usb.controlTransfer(0x40, 0xc1, 0, 0, toSend, len(toSend)) 
-                tmp = self.usb.controlTransfer(0xc0, 0xc0, 0, 0, 64)
-            if len(tmp)<64:
-                raise IOError("Lenght of received data "+len(tmp)+"<64 bytes")
-            if self.verbose>2:
-                self.log("sendCommand:Response : "+str(tmp))
-            rxStatus = tmp[1]
-            rxData = tmp[8:]
-            return (rxStatus, rxData)
-        else:
-            nData = len(data)
-            if nData>56:
-                raise ValueError("Length of data must be less than 56, "+str(nData)+" bytes given")
-            return self.cyDev.transferLMS64C(command, data)
-
+        tmp = [0]*64
+        tmp[0] = command
+        tmp[1] = 0
+        tmp[2] = nDataBlocks
+        tmp[3] = periphID
+        nData = len(data)
+        if nData>56:
+            raise ValueError("Length of data must be less than 56, "+str(nData)+" bytes given")
+        for i in range(0, nData):
+            tmp[8+i] = data[i]
+        if self.verbose>2:
+            self.log("sendCommand:Write    : "+str(tmp))
+        toSend = tmp
+        if (self.bulkControl==True) and (command in self.bulkCommands):
+            self.usb.bulkWrite(self.ctrlBulkOutAddr, toSend)
+            tmp = self.usb.bulkRead(self.ctrlBulkInAddr, 64)
+        else:        
+            self.usb.controlTransfer(0x40, 0xc1, 0, 0, toSend, len(toSend)) 
+            tmp = self.usb.controlTransfer(0xc0, 0xc0, 0, 0, 64)
+        if len(tmp)<64:
+            raise IOError("Lenght of received data "+len(tmp)+"<64 bytes")
+        if self.verbose>2:
+            self.log("sendCommand:Response : "+str(tmp))
+        rxStatus = tmp[1]
+        rxData = tmp[8:]
+        return (rxStatus, rxData)
 
     #
     # Utility functions
@@ -253,7 +205,7 @@ class LimeSDR(object):
 
     def getInfo(self):
         """
-        Get the information about LimeSDR.
+        Get the information about QSpark.
         Function returns 
         (FW_VER, DEV_TYPE, LMS_PROTOCOL_VER, HW_VER, EXP_BOARD)
         """
@@ -270,7 +222,7 @@ class LimeSDR(object):
    
     def printInfo(self):
         """
-        Print info about LimeSDR
+        Print info about QSpark
         """
         FW_VER, DEV_TYPE, LMS_PROTOCOL_VER, HW_VER, EXP_BOARD = self.getInfo()
         self.log("FW_VER           : "+str(FW_VER))
@@ -367,7 +319,7 @@ class LimeSDR(object):
     #
 
     def MCUProgram(self, mcuProgram, Mode):
-        if not self.bulkControl and self.usbBackend=="PyUSB":
+        if not self.bulkControl:
             # Hardware does not support bulk endpoint control
             self._MCUProgram_FW(mcuProgram, Mode)
         else:
@@ -384,8 +336,7 @@ class LimeSDR(object):
                 # MCU has 8k RAM
                 if len(mcuProgram)>8192:
                     raise ValueError("MCU program for mask 0 chips must be less than 8 kB. Given program size:"+str(len(mcuProgram)))
-                self._MCUProgram_Direct(mcuProgram, Mode)
-        
+                self._MCUProgram_Direct(self, mcuProgram, Mode)
             
     def _MCUProgram_Direct(self, mcuProgram, Mode):
         """

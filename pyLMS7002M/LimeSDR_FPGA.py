@@ -9,6 +9,13 @@
 
 import numpy
 
+# Try to import the LimeAPI library
+try:
+    from cyLimeLib import *
+    cyLimeLibPresent = True
+except:
+    cyLimeLibPresent = False
+
 class LimeSDR_FPGA(object):
     
     def __init__(self, spiRead, spiWrite, usb):
@@ -33,4 +40,5 @@ class LimeSDR_FPGA(object):
         res += "GW Function      : "+str(gwFunction)+"\n"
         res += "GW Revision      : "+str(gwRevision)+"\n"
         return res                
+
 

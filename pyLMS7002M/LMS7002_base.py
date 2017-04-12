@@ -92,10 +92,6 @@ class LMS7002_base(object):
         """
         Convert sign-magnitude representation to integer
         """
-        if val<0:
-            sign = 1
-        else:
-            sign = 0
         ret = val & (2**(nbits-1)-1)
         if val & (1 << (nbits-1))!=0:
             sign = -1

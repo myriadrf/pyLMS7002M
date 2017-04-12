@@ -466,5 +466,36 @@ class LMS7002_TBB(LMS7002_base):
             raise ValueError("Value must be [0..255]")
         self._writeReg('LPF0', 'RCAL_LPFS5_TBB<7:0>', value)
 
+    #
+    # TBB_LPF_BYP (0x010B)
+    #
+
+    # R5_LPF_BYP_TBB
+    @property 
+    def R5_LPF_BYP_TBB(self):
+        """
+        Get the value of R5_LPF_BYP_TBB
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:        
+            return self._readReg('LPF_BYP', 'R5_LPF_BYP_TBB')
+        else:
+            raise ValueError("Bitfield R5_LPF_BYP_TBB is not supported on chip version "+str(self.chip.chipID))
+
+
+    @R5_LPF_BYP_TBB.setter
+    def R5_LPF_BYP_TBB(self, value):
+        """
+        Set the value of R5_LPF_BYP_TBB
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0, 1, 'USE', 'BYP']:
+                raise ValueError("Value must be [0,1,'USE', 'OFF']")
+            if value==0 or value=='OFF':
+                val = 0
+            else:
+                val = 1
+            self._writeReg('LPF_BYP', 'R5_LPF_BYP_TBB', val)            
+        else:
+            raise ValueError("Bitfield R5_LPF_BYP_TBB is not supported on chip version "+str(self.chip.chipID))
         
 

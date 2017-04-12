@@ -710,6 +710,54 @@ class LMS7002_LimeLight(LMS7002_base):
     #
     # LimeLight_CLKSRC (0x002A)
     #
+
+    # FCLK2_DLY<1:0>
+    @property 
+    def FCLK2_DLY(self):
+        """
+        Get the value of FCLK2_DLY<1:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('CLKSRC', 'FCLK2_DLY<1:0>')
+        else:
+            raise ValueError("Bitfield FCLK2_DLY is not supported on chip version "+str(self.chip.chipID))
+
+
+    @FCLK2_DLY.setter
+    def FCLK2_DLY(self, value):
+        """
+        Set the value of FCLK2_DLY<1:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if not(0 <= value <= 3):
+                raise ValueError("Value must be [0..3]")
+            self._writeReg('CLKSRC', 'FCLK2_DLY<1:0>', value)
+        else:
+            raise ValueError("Bitfield FCLK2_DLY is not supported on chip version "+str(self.chip.chipID))
+
+    # FCLK1_DLY<1:0>
+    @property 
+    def FCLK1_DLY(self):
+        """
+        Get the value of FCLK1_DLY<1:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('CLKSRC', 'FCLK1_DLY<1:0>')
+        else:
+            raise ValueError("Bitfield FCLK1_DLY is not supported on chip version "+str(self.chip.chipID))
+
+
+    @FCLK1_DLY.setter
+    def FCLK1_DLY(self, value):
+        """
+        Set the value of FCLK1_DLY<1:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if not(0 <= value <= 3):
+                raise ValueError("Value must be [0..3]")
+            self._writeReg('CLKSRC', 'FCLK1_DLY<1:0>', value)
+        else:
+            raise ValueError("Bitfield FCLK1_DLY is not supported on chip version "+str(self.chip.chipID))
     
     # RX_MUX<1:0>
     @property 
@@ -850,6 +898,100 @@ class LMS7002_LimeLight(LMS7002_base):
         if value not in [0, 1]:
             raise ValueError("Value must be [0,1]")
         self._writeReg('CLKCFG', 'FCLK1_INV', value)
+
+    # MCLK2_DLY<1:0>
+    @property 
+    def MCLK2_DLY(self):
+        """
+        Get the value of MCLK2_DLY<1:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('CLKCFG', 'MCLK2_DLY<1:0>')
+        else:
+            raise ValueError("Bitfield MCLK2_DLY is not supported on chip version "+str(self.chip.chipID))
+
+
+    @MCLK2_DLY.setter
+    def MCLK2_DLY(self, value):
+        """
+        Set the value of MCLK2_DLY<1:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if not(0 <= value <= 3):
+                raise ValueError("Value must be [0..3]")
+            self._writeReg('CLKCFG', 'MCLK2_DLY<1:0>', value)
+        else:
+            raise ValueError("Bitfield MCLK2_DLY is not supported on chip version "+str(self.chip.chipID))
+
+    # MCLK1_DLY<1:0>
+    @property 
+    def MCLK1_DLY(self):
+        """
+        Get the value of MCLK1_DLY<1:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('CLKCFG', 'MCLK1_DLY<1:0>')
+        else:
+            raise ValueError("Bitfield MCLK1_DLY is not supported on chip version "+str(self.chip.chipID))
+
+
+    @MCLK1_DLY.setter
+    def MCLK1_DLY(self, value):
+        """
+        Set the value of MCLK1_DLY<1:0>
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if not(0 <= value <= 3):
+                raise ValueError("Value must be [0..3]")
+            self._writeReg('CLKCFG', 'MCLK1_DLY<1:0>', value)
+        else:
+            raise ValueError("Bitfield MCLK1_DLY is not supported on chip version "+str(self.chip.chipID))
+
+    # MCLK2_INV
+    @property 
+    def MCLK2_INV(self):
+        """
+        Get the value of MCLK2_INV
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('CLKCFG', 'MCLK2_INV')
+        else:
+            raise ValueError("Bitfield MCLK2_INV is not supported on chip version "+str(self.chip.chipID))
+
+    @MCLK2_INV.setter
+    def MCLK2_INV(self, value):
+        """
+        Set the value of MCLK2_INV
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0, 1]:
+                raise ValueError("Value must be [0,1]")
+            self._writeReg('CLKCFG', 'MCLK2_INV', value)
+        else:
+            raise ValueError("Bitfield MCLK2_INV is not supported on chip version "+str(self.chip.chipID))
+
+    # MCLK1_INV
+    @property 
+    def MCLK1_INV(self):
+        """
+        Get the value of MCLK1_INV
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            return self._readReg('CLKCFG', 'MCLK1_INV')
+        else:
+            raise ValueError("Bitfield MCLK1_INV is not supported on chip version "+str(self.chip.chipID))
+
+    @MCLK1_INV.setter
+    def MCLK1_INV(self, value):
+        """
+        Set the value of MCLK1_INV
+        """
+        if self.chip.chipID == self.chip.chipIDMR3:
+            if value not in [0, 1]:
+                raise ValueError("Value must be [0,1]")
+            self._writeReg('CLKCFG', 'MCLK1_INV', value)
+        else:
+            raise ValueError("Bitfield MCLK1_INV is not supported on chip version "+str(self.chip.chipID))
 
     # MCLK2SRC<1:0>
     @property 
