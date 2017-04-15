@@ -4729,7 +4729,7 @@ REGISTER    TRX_GAIN_CFG2    0x0126
         #!     4 - Gmax-21
         #!     3 - Gmax-24
         #!     2 - Gmax-27
-        #!     1 – Gmax-30
+        #!     1 - Gmax-30
     ENDBITFIELD
     BITFIELD   G_TIA_RFE<1:0>
         POSITION=<1:0>
@@ -9919,13 +9919,13 @@ REGISTER    DCCAL_TXAI    0x05C3
         POSITION=15
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to TXAI DAC from DC_TXAI register Default: 0
+        #! 0 to 1 - writes the value to TXAI DAC from DC_TXAI register Default: 0
     ENDBITFIELD
     BITFIELD   DCRD_TXAI
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to TXAI DAC from DC_TXAI register Default: 0
+        #! 0 to 1 - writes the value to TXAI DAC from DC_TXAI register Default: 0
     ENDBITFIELD
     BITFIELD   DC_TXAI<10:0>
         POSITION=<10:0>
@@ -9942,13 +9942,13 @@ REGISTER    DCCAL_TXAQ    0x05C4
         POSITION=15
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to TXAQ DAC from DC_TXAQ register Default: 0
+        #! 0 to 1 - writes the value to TXAQ DAC from DC_TXAQ register Default: 0
     ENDBITFIELD
     BITFIELD   DCRD_TXAQ
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to TXAQ DAC from DC_TXAQ register Default: 0
+        #! 0 to 1 - writes the value to TXAQ DAC from DC_TXAQ register Default: 0
     ENDBITFIELD
     BITFIELD   DC_TXAQ<10:0>
         POSITION=<10:0>
@@ -9965,13 +9965,13 @@ REGISTER    DCCAL_TXBI    0x05C5
         POSITION=15
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to TXBI DAC from DC_TXBI register Default: 0
+        #! 0 to 1 - writes the value to TXBI DAC from DC_TXBI register Default: 0
     ENDBITFIELD
     BITFIELD   DCRD_TXBI
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to TXBI DAC from DC_TXBI register Default: 0
+        #! 0 to 1 - writes the value to TXBI DAC from DC_TXBI register Default: 0
     ENDBITFIELD
     BITFIELD   DC_TXBI<10:0>
         POSITION=<10:0>
@@ -9988,13 +9988,13 @@ REGISTER    DCCAL_TXBQ    0x05C6
         POSITION=15
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to TXBQ DAC from DC_TXBQ register Default: 0
+        #! 0 to 1 - writes the value to TXBQ DAC from DC_TXBQ register Default: 0
     ENDBITFIELD
     BITFIELD   DCRD_TXBQ
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to TXBQ DAC from DC_TXBQ register Default: 0
+        #! 0 to 1 - writes the value to TXBQ DAC from DC_TXBQ register Default: 0
     ENDBITFIELD
     BITFIELD   DC_TXBQ<10:0>
         POSITION=<10:0>
@@ -10011,13 +10011,13 @@ REGISTER    DCCAL_RXAI    0x05C7
         POSITION=15
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to RXAI DAC from DC_RXAI register Default: 0
+        #! 0 to 1 - writes the value to RXAI DAC from DC_RXAI register Default: 0
     ENDBITFIELD
     BITFIELD   DCRD_RXAI
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to RXAI DAC from DC_RXAI register Default: 0
+        #! 0 to 1 - writes the value to RXAI DAC from DC_RXAI register Default: 0
     ENDBITFIELD
     BITFIELD   DC_RXAI<6:0>
         POSITION=<6:0>
@@ -10034,13 +10034,13 @@ REGISTER    DCCAL_RXAQ    0x05C8
         POSITION=15
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to RXAQ DAC from DC_RXAQ register Default: 0
+        #! 0 to 1 - writes the value to RXAQ DAC from DC_RXAQ register Default: 0
     ENDBITFIELD
     BITFIELD   DCRD_RXAQ
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to RXAQ DAC from DC_RXAQ register Default: 0
+        #! 0 to 1 - writes the value to RXAQ DAC from DC_RXAQ register Default: 0
     ENDBITFIELD
     BITFIELD   DC_RXAQ<6:0>
         POSITION=<6:0>
@@ -10057,13 +10057,13 @@ REGISTER    DCCAL_RXBI    0x05C9
         POSITION=15
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to RXBI DAC from DC_RXBI register Default: 0
+        #! 0 to 1 - writes the value to RXBI DAC from DC_RXBI register Default: 0
     ENDBITFIELD
     BITFIELD   DCRD_RXBI
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to RXBI DAC from DC_RXBI register Default: 0
+        #! 0 to 1 - writes the value to RXBI DAC from DC_RXBI register Default: 0
     ENDBITFIELD
     BITFIELD   DC_RXBI<6:0>
         POSITION=<6:0>
@@ -10080,13 +10080,13 @@ REGISTER    DCCAL_RXBQ    0x05CA
         POSITION=15
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to RXBQ DAC from DC_RXBQ register Default: 0
+        #! 0 to 1 - writes the value to RXBQ DAC from DC_RXBQ register Default: 0
     ENDBITFIELD
     BITFIELD   DCRD_RXBQ
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 – writes the value to RXBQ DAC from DC_RXBQ register Default: 0
+        #! 0 to 1 - writes the value to RXBQ DAC from DC_RXBQ register Default: 0
     ENDBITFIELD
     BITFIELD   DC_RXBQ<6:0>
         POSITION=<6:0>
@@ -10168,7 +10168,7 @@ REGISTER    RPT_CFG0    0x0600
         MODE=RW
         #! Operation mode.
         #!     0 - automatic (default)
-        #!     1 – manual
+        #!     1 - manual
     ENDBITFIELD
     BITFIELD   PD
         POSITION=0
@@ -10201,7 +10201,7 @@ REGISTER    RPT_CFG2    0x0602
         DEFAULT=10000
         MODE=RW
         #! Controls the reference bias current of the test ADC.
-        #! 10000 – (default)
+        #! 10000 - (default)
     ENDBITFIELD
     BITFIELD   HYSCMP<2:0>
         POSITION=<8:6>
@@ -10238,7 +10238,7 @@ REGISTER    RPT_CFG3    0x0603
         DEFAULT=00000000
         MODE=RW
         #! Stores the value to be written to the DAC, when MODE = 1 Default: 0
-        #! DAC_VAL[7:0] – magnitude
+        #! DAC_VAL[7:0] - magnitude
     ENDBITFIELD
 ENDREGISTER
 
@@ -10333,7 +10333,7 @@ REGISTER    RSSI_DCCAL1    0x0641
         MODE=RW
         #! Value of RSSI offset DAC2. Default: 32.
         #!     DCO2[6] - sign
-        #!     DCO2[5:0] – magnitude
+        #!     DCO2[5:0] - magnitude
     ENDBITFIELD
     BITFIELD   DCO1<6:0>
         POSITION=<6:0>
