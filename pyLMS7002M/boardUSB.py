@@ -77,4 +77,9 @@ class boardUSB(object):
         """
         return self.dev.read(endpoint, nBytes, timeout)
         
-    
+    def closeDevice(self):
+        """
+        Close USB device
+        """
+        self.dev.reset()
+        

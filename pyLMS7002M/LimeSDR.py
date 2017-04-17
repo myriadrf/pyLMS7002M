@@ -131,6 +131,8 @@ class LimeSDR(object):
         """
         if self.usbBackend=="LimeAPI":
             del self.cyDev
+        else:
+            self.usb.closeDevice()
     
     @staticmethod
     def findLMS7002(backend="PyUSB"):
