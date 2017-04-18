@@ -550,8 +550,8 @@ class LMS7002_DCCAL(LMS7002_base):
         if self.chip.chipID == self.chip.chipIDMR3:        
             if not(-63<= value <=63):
                 raise ValueError("Value must be [-63..63]")
-            val = self.intToSignMagnitude(value, 11)
-            self._writeReg('RXAI', 'DC_RXAI<7:0>', val)
+            val = self.intToSignMagnitude(value, 7)
+            self._writeReg('RXAI', 'DC_RXAI<6:0>', val)
             self._writeReg('RXAI', 'DCWR_RXAI', 0)
             self._writeReg('RXAI', 'DCWR_RXAI', 1)            
         else:
@@ -582,8 +582,8 @@ class LMS7002_DCCAL(LMS7002_base):
         if self.chip.chipID == self.chip.chipIDMR3:        
             if not(-63<= value <=63):
                 raise ValueError("Value must be [-63..63]")
-            val = self.intToSignMagnitude(value, 11)
-            self._writeReg('RXAQ', 'DC_RXAQ<7:0>', val)
+            val = self.intToSignMagnitude(value, 7)
+            self._writeReg('RXAQ', 'DC_RXAQ<6:0>', val)
             self._writeReg('RXAQ', 'DCWR_RXAQ', 0)
             self._writeReg('RXAQ', 'DCWR_RXAQ', 1)            
         else:
@@ -614,15 +614,15 @@ class LMS7002_DCCAL(LMS7002_base):
         if self.chip.chipID == self.chip.chipIDMR3:        
             if not(-63<= value <=63):
                 raise ValueError("Value must be [-63..63]")
-            val = self.intToSignMagnitude(value, 11)
-            self._writeReg('RXBI', 'DC_RXBI<7:0>', val)
+            val = self.intToSignMagnitude(value, 7)
+            self._writeReg('RXBI', 'DC_RXBI<6:0>', val)
             self._writeReg('RXBI', 'DCWR_RXBI', 0)
             self._writeReg('RXBI', 'DCWR_RXBI', 1)            
         else:
             raise ValueError("Bitfield RXBI is not supported on chip version "+str(self.chip.chipID))
             
     #
-    # DCCAL_RXBQ (0x05C9)
+    # DCCAL_RXBQ (0x05CA)
     #  
 
     @property 
@@ -646,8 +646,8 @@ class LMS7002_DCCAL(LMS7002_base):
         if self.chip.chipID == self.chip.chipIDMR3:        
             if not(-63<= value <=63):
                 raise ValueError("Value must be [-63..63]")
-            val = self.intToSignMagnitude(value, 11)
-            self._writeReg('RXBQ', 'DC_RXBQ<7:0>', val)
+            val = self.intToSignMagnitude(value, 7)
+            self._writeReg('RXBQ', 'DC_RXBQ<6:0>', val)
             self._writeReg('RXBQ', 'DCWR_RXBQ', 0)
             self._writeReg('RXBQ', 'DCWR_RXBQ', 1)            
         else:

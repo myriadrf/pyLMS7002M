@@ -539,6 +539,31 @@ class LMS7002_RxTSP(LMS7002_base):
     # RXTSP_AGC2 (0x040A)
     #
 
+    # RSSI_MODE<1:0>
+    @property 
+    def RSSI_MODE(self):
+        """
+        Get the value of RSSI_MODE<1:0>
+        """
+        return self._readReg('AGC2', 'RSSI_MODE<1:0>')
+
+    @RSSI_MODE.setter
+    def RSSI_MODE(self, value):
+        """
+        Set the value of RSSI_MODE<1:0>
+        """
+        if value not in [0,1,2,'RSSI', 'I', 'Q']:
+            raise ValueError("Value must be [0,1,2,'RSSI', 'I', 'Q']")
+        if value==0 or value=='RSSI':
+            val = 0
+        elif value==1 or value=='I':
+            val = 1
+        elif value==2 or value=='Q':
+            val = 2
+        else:
+            raise ValueError("Value of 3 is not allowed")
+        self._writeReg('AGC2', 'RSSI_MODE<1:0>', val)
+
     # AGC_MODE<1:0>
     @property 
     def AGC_MODE(self):

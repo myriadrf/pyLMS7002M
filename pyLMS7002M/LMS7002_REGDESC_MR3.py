@@ -7467,6 +7467,16 @@ REGISTER    RXTSP_AGC1    0x0409
 ENDREGISTER
 
 REGISTER    RXTSP_AGC2    0x040A
+    BITFIELD   RSSI_MODE<1:0>
+        POSITION=<15:14>
+        DEFAULT=00
+        MODE=RW
+        #! RSSI Mode.
+        #!     00 - Normal RSSI
+        #!     01 - I amplitude
+        #!     10 - Q amplitude
+        #!     11 - Do not use
+    ENDBITFIELD
     BITFIELD   AGC_MODE<1:0>
         POSITION=<13:12>
         DEFAULT=00
@@ -9925,7 +9935,7 @@ REGISTER    DCCAL_TXAI    0x05C3
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 - writes the value to TXAI DAC from DC_TXAI register Default: 0
+        #! 0 to 1 - read the value from TXAI DAC to DC_TXAI register Default: 0
     ENDBITFIELD
     BITFIELD   DC_TXAI<10:0>
         POSITION=<10:0>
@@ -9948,7 +9958,7 @@ REGISTER    DCCAL_TXAQ    0x05C4
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 - writes the value to TXAQ DAC from DC_TXAQ register Default: 0
+        #! 0 to 1 - read the value from TXAQ DAC to DC_TXAQ register Default: 0
     ENDBITFIELD
     BITFIELD   DC_TXAQ<10:0>
         POSITION=<10:0>
@@ -9971,7 +9981,7 @@ REGISTER    DCCAL_TXBI    0x05C5
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 - writes the value to TXBI DAC from DC_TXBI register Default: 0
+        #! 0 to 1 - read the value from TXBI DAC to DC_TXBI register Default: 0
     ENDBITFIELD
     BITFIELD   DC_TXBI<10:0>
         POSITION=<10:0>
@@ -9994,7 +10004,7 @@ REGISTER    DCCAL_TXBQ    0x05C6
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 - writes the value to TXBQ DAC from DC_TXBQ register Default: 0
+        #! 0 to 1 - read the value from TXBQ DAC to DC_TXBQ register Default: 0
     ENDBITFIELD
     BITFIELD   DC_TXBQ<10:0>
         POSITION=<10:0>
@@ -10017,15 +10027,15 @@ REGISTER    DCCAL_RXAI    0x05C7
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 - writes the value to RXAI DAC from DC_RXAI register Default: 0
+        #! 0 to 1 - read the value from RXAI DAC to DC_RXAI register Default: 0
     ENDBITFIELD
     BITFIELD   DC_RXAI<6:0>
         POSITION=<6:0>
         DEFAULT=0000000
         MODE=RW
         #! Stores the value to be written to the RXAI DAC as well as read value from RXAI_DAC. Default: 0
-        #!     DC_RXAI[10] - sign
-        #!     DC_RXAI[9:0] - magnitude
+        #!     DC_RXAI[6] - sign
+        #!     DC_RXAI[5:0] - magnitude
     ENDBITFIELD
 ENDREGISTER
 
@@ -10040,15 +10050,15 @@ REGISTER    DCCAL_RXAQ    0x05C8
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 - writes the value to RXAQ DAC from DC_RXAQ register Default: 0
+        #! 0 to 1 - writes the value from RXAQ DAC to DC_RXAQ register Default: 0
     ENDBITFIELD
     BITFIELD   DC_RXAQ<6:0>
         POSITION=<6:0>
         DEFAULT=0000000
         MODE=RW
         #! Stores the value to be written to the RXAQ DAC as well as read value from RXAQ_DAC. Default: 0
-        #!     DC_RXAQ[10] - sign
-        #!     DC_RXAQ[9:0] - magnitude
+        #!     DC_RXAQ[6] - sign
+        #!     DC_RXAQ[5:0] - magnitude
     ENDBITFIELD
 ENDREGISTER
 
@@ -10063,15 +10073,15 @@ REGISTER    DCCAL_RXBI    0x05C9
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 - writes the value to RXBI DAC from DC_RXBI register Default: 0
+        #! 0 to 1 - writes the value from RXBI DAC to DC_RXBI register Default: 0
     ENDBITFIELD
     BITFIELD   DC_RXBI<6:0>
         POSITION=<6:0>
         DEFAULT=0000000
         MODE=RW
         #! Stores the value to be written to the RXBI DAC as well as read value from RXBI_DAC. Default: 0
-        #!     DC_RXBI[10] - sign
-        #!     DC_RXBI[9:0] - magnitude
+        #!     DC_RXBI[6] - sign
+        #!     DC_RXBI[5:0] - magnitude
     ENDBITFIELD
 ENDREGISTER
 
@@ -10086,15 +10096,15 @@ REGISTER    DCCAL_RXBQ    0x05CA
         POSITION=14
         DEFAULT=0
         MODE=RW
-        #! 0 to 1 - writes the value to RXBQ DAC from DC_RXBQ register Default: 0
+        #! 0 to 1 - read the value from RXBQ DAC to DC_RXBQ register Default: 0
     ENDBITFIELD
     BITFIELD   DC_RXBQ<6:0>
         POSITION=<6:0>
         DEFAULT=0000000
         MODE=RW
         #! Stores the value to be written to the RXBQ DAC as well as read value from RXBQ_DAC. Default: 0
-        #!     DC_RXBQ[10] - sign
-        #!     DC_RXBQ[9:0] - magnitude
+        #!     DC_RXBQ[6] - sign
+        #!     DC_RXBQ[5:0] - magnitude
     ENDBITFIELD
 ENDREGISTER
 
