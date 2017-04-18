@@ -77,4 +77,11 @@ class boardUSB(object):
         """
         return self.dev.read(endpoint, nBytes, timeout)
         
-    
+    def closeDevice(self):
+        """
+        Close USB device
+        """
+        # https://www.mail-archive.com/pyusb-users@lists.sourceforge.net/msg00624.html
+        usb.util.dispose_resources(self.dev)
+        self.dev = None
+        

@@ -15,6 +15,7 @@ from Si5351 import *
 from boardUSB import *
 from LimeSDR_FPGA import *
 from timeit import default_timer as timer
+import atexit
 
 # Try to import the LimeAPI library
 try:
@@ -62,6 +63,11 @@ class LimeSDR(object):
                 raise ValueError("LimeSDR not found")            
             self.usb = self.cyDev
             
+        # http://stackoverflow.com/questions/8907905/del-myclass-doesnt-call-object-del
+        # https://docs.python.org/3/reference/datamodel.html#object.__del__
+        # solution is to avoid __del__, define an explict close() and call it atexit
+        atexit.register(self.close)
+
         #self.usb.setConfiguration()
         self.verbose = verbose
         self.bulkControl = False
@@ -125,12 +131,14 @@ class LimeSDR(object):
         self.ADF4002 = ADF4002(Proxy(self.ADF4002Program))
         self.FPGA = LimeSDR_FPGA(spiRead=Proxy(self.BoardSPI_Read), spiWrite=Proxy(self.BoardSPI_Write), usb=self.usb)
         
-    def __del__(self):
+    def close(self):
         """
         Close communication with LimeSDR
         """
         if self.usbBackend=="LimeAPI":
             del self.cyDev
+        else:
+            self.usb.closeDevice()
     
     @staticmethod
     def findLMS7002(backend="PyUSB"):
