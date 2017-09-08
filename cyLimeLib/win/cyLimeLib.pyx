@@ -74,7 +74,6 @@ cdef class cyLimeLib:
         free(src[0])
         free(src[1])
 
-    # milans 170307
     def getDevice(self):
         return <uintptr_t>self._lms_device
         

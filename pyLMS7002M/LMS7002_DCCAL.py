@@ -347,6 +347,7 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         self.DCCAL_START = 0
         self.DCCAL_START = 1<<7
+        self.DCCAL_START = 0
         
     def startRXBI(self):
         """
@@ -354,6 +355,7 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         self.DCCAL_START = 0
         self.DCCAL_START = 1<<6
+        self.DCCAL_START = 0
 
     def startRXAQ(self):
         """
@@ -361,6 +363,7 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         self.DCCAL_START = 0
         self.DCCAL_START = 1<<5
+        self.DCCAL_START = 0
 
     def startRXAI(self):
         """
@@ -368,6 +371,7 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         self.DCCAL_START = 0
         self.DCCAL_START = 1<<4
+        self.DCCAL_START = 0
         
     def startTXBQ(self):
         """
@@ -375,6 +379,7 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         self.DCCAL_START = 0
         self.DCCAL_START = 1<<3
+        self.DCCAL_START = 0
 
     def startTXBI(self):
         """
@@ -382,6 +387,7 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         self.DCCAL_START = 0
         self.DCCAL_START = 1<<2
+        self.DCCAL_START = 0
 
     def startTXAQ(self):
         """
@@ -389,6 +395,7 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         self.DCCAL_START = 0
         self.DCCAL_START = 1<<1
+        self.DCCAL_START = 0
         
     def startTXAI(self):
         """
@@ -396,6 +403,7 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         self.DCCAL_START = 0
         self.DCCAL_START = 1
+        self.DCCAL_START = 0
 
     #
     # DCCAL_TXAI (0x05C3)
@@ -408,7 +416,8 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         if self.chip.chipID == self.chip.chipIDMR3:
             self._writeReg('TXAI', 'DCRD_TXAI', 0)
-            self._writeReg('TXAI', 'DCRD_TXAI', 1)            
+            self._writeReg('TXAI', 'DCRD_TXAI', 1)
+            self._writeReg('TXAI', 'DCRD_TXAI', 0)            
             val = self._readReg('TXAI', 'DC_TXAI<10:0>')
             return self.signMagnitudeToInt(val, 11)
         else:
@@ -425,7 +434,8 @@ class LMS7002_DCCAL(LMS7002_base):
             val = self.intToSignMagnitude(value, 11)
             self._writeReg('TXAI', 'DC_TXAI<10:0>', val)
             self._writeReg('TXAI', 'DCWR_TXAI', 0)
-            self._writeReg('TXAI', 'DCWR_TXAI', 1)            
+            self._writeReg('TXAI', 'DCWR_TXAI', 1)
+            self._writeReg('TXAI', 'DCWR_TXAI', 0)
         else:
             raise ValueError("Bitfield TXAI is not supported on chip version "+str(self.chip.chipID))
 
@@ -440,7 +450,8 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         if self.chip.chipID == self.chip.chipIDMR3:
             self._writeReg('TXAQ', 'DCRD_TXAQ', 0)
-            self._writeReg('TXAQ', 'DCRD_TXAQ', 1)            
+            self._writeReg('TXAQ', 'DCRD_TXAQ', 1)
+            self._writeReg('TXAQ', 'DCRD_TXAQ', 0)            
             val = self._readReg('TXAQ', 'DC_TXAQ<10:0>')
             return self.signMagnitudeToInt(val, 11)
         else:
@@ -457,7 +468,8 @@ class LMS7002_DCCAL(LMS7002_base):
             val = self.intToSignMagnitude(value, 11)
             self._writeReg('TXAQ', 'DC_TXAQ<10:0>', val)
             self._writeReg('TXAQ', 'DCWR_TXAQ', 0)
-            self._writeReg('TXAQ', 'DCWR_TXAQ', 1)            
+            self._writeReg('TXAQ', 'DCWR_TXAQ', 1)
+            self._writeReg('TXAQ', 'DCWR_TXAQ', 0)            
         else:
             raise ValueError("Bitfield TXAQ is not supported on chip version "+str(self.chip.chipID))
                                                                                         
@@ -472,7 +484,8 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         if self.chip.chipID == self.chip.chipIDMR3:
             self._writeReg('TXBI', 'DCRD_TXBI', 0)
-            self._writeReg('TXBI', 'DCRD_TXBI', 1)            
+            self._writeReg('TXBI', 'DCRD_TXBI', 1)
+            self._writeReg('TXBI', 'DCRD_TXBI', 0)            
             val = self._readReg('TXBI', 'DC_TXBI<10:0>')
             return self.signMagnitudeToInt(val, 11)
         else:
@@ -489,7 +502,8 @@ class LMS7002_DCCAL(LMS7002_base):
             val = self.intToSignMagnitude(value, 11)
             self._writeReg('TXBI', 'DC_TXBI<10:0>', val)
             self._writeReg('TXBI', 'DCWR_TXBI', 0)
-            self._writeReg('TXBI', 'DCWR_TXBI', 1)            
+            self._writeReg('TXBI', 'DCWR_TXBI', 1)
+            self._writeReg('TXBI', 'DCWR_TXBI', 0)            
         else:
             raise ValueError("Bitfield TXBI is not supported on chip version "+str(self.chip.chipID))
 
@@ -504,7 +518,8 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         if self.chip.chipID == self.chip.chipIDMR3:
             self._writeReg('TXBQ', 'DCRD_TXBQ', 0)
-            self._writeReg('TXBQ', 'DCRD_TXBQ', 1)            
+            self._writeReg('TXBQ', 'DCRD_TXBQ', 1)
+            self._writeReg('TXBQ', 'DCRD_TXBQ', 0)            
             val = self._readReg('TXBQ', 'DC_TXBQ<10:0>')
             return self.signMagnitudeToInt(val, 11)
         else:
@@ -521,7 +536,8 @@ class LMS7002_DCCAL(LMS7002_base):
             val = self.intToSignMagnitude(value, 11)
             self._writeReg('TXBQ', 'DC_TXBQ<10:0>', val)
             self._writeReg('TXBQ', 'DCWR_TXBQ', 0)
-            self._writeReg('TXBQ', 'DCWR_TXBQ', 1)            
+            self._writeReg('TXBQ', 'DCWR_TXBQ', 1)
+            self._writeReg('TXBQ', 'DCWR_TXBQ', 0)            
         else:
             raise ValueError("Bitfield TXBQ is not supported on chip version "+str(self.chip.chipID))
             
@@ -536,7 +552,8 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         if self.chip.chipID == self.chip.chipIDMR3:
             self._writeReg('RXAI', 'DCRD_RXAI', 0)
-            self._writeReg('RXAI', 'DCRD_RXAI', 1)            
+            self._writeReg('RXAI', 'DCRD_RXAI', 1)
+            self._writeReg('RXAI', 'DCRD_RXAI', 0)            
             val = self._readReg('RXAI', 'DC_RXAI<6:0>')
             return self.signMagnitudeToInt(val, 7)
         else:
@@ -553,7 +570,8 @@ class LMS7002_DCCAL(LMS7002_base):
             val = self.intToSignMagnitude(value, 7)
             self._writeReg('RXAI', 'DC_RXAI<6:0>', val)
             self._writeReg('RXAI', 'DCWR_RXAI', 0)
-            self._writeReg('RXAI', 'DCWR_RXAI', 1)            
+            self._writeReg('RXAI', 'DCWR_RXAI', 1)
+            self._writeReg('RXAI', 'DCWR_RXAI', 0)            
         else:
             raise ValueError("Bitfield RXAI is not supported on chip version "+str(self.chip.chipID))
             
@@ -568,7 +586,8 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         if self.chip.chipID == self.chip.chipIDMR3:
             self._writeReg('RXAQ', 'DCRD_RXAQ', 0)
-            self._writeReg('RXAQ', 'DCRD_RXAQ', 1)            
+            self._writeReg('RXAQ', 'DCRD_RXAQ', 1)
+            self._writeReg('RXAQ', 'DCRD_RXAQ', 0)            
             val = self._readReg('RXAQ', 'DC_RXAQ<6:0>')
             return self.signMagnitudeToInt(val, 7)
         else:
@@ -585,7 +604,8 @@ class LMS7002_DCCAL(LMS7002_base):
             val = self.intToSignMagnitude(value, 7)
             self._writeReg('RXAQ', 'DC_RXAQ<6:0>', val)
             self._writeReg('RXAQ', 'DCWR_RXAQ', 0)
-            self._writeReg('RXAQ', 'DCWR_RXAQ', 1)            
+            self._writeReg('RXAQ', 'DCWR_RXAQ', 1)
+            self._writeReg('RXAQ', 'DCWR_RXAQ', 0)            
         else:
             raise ValueError("Bitfield RXAQ is not supported on chip version "+str(self.chip.chipID))
             
@@ -600,7 +620,8 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         if self.chip.chipID == self.chip.chipIDMR3:
             self._writeReg('RXBI', 'DCRD_RXBI', 0)
-            self._writeReg('RXBI', 'DCRD_RXBI', 1)            
+            self._writeReg('RXBI', 'DCRD_RXBI', 1)
+            self._writeReg('RXBI', 'DCRD_RXBI', 0)            
             val = self._readReg('RXBI', 'DC_RXBI<6:0>')
             return self.signMagnitudeToInt(val, 7)
         else:
@@ -617,7 +638,8 @@ class LMS7002_DCCAL(LMS7002_base):
             val = self.intToSignMagnitude(value, 7)
             self._writeReg('RXBI', 'DC_RXBI<6:0>', val)
             self._writeReg('RXBI', 'DCWR_RXBI', 0)
-            self._writeReg('RXBI', 'DCWR_RXBI', 1)            
+            self._writeReg('RXBI', 'DCWR_RXBI', 1)
+            self._writeReg('RXBI', 'DCWR_RXBI', 0)            
         else:
             raise ValueError("Bitfield RXBI is not supported on chip version "+str(self.chip.chipID))
             
@@ -632,7 +654,8 @@ class LMS7002_DCCAL(LMS7002_base):
         """
         if self.chip.chipID == self.chip.chipIDMR3:
             self._writeReg('RXBQ', 'DCRD_RXBQ', 0)
-            self._writeReg('RXBQ', 'DCRD_RXBQ', 1)            
+            self._writeReg('RXBQ', 'DCRD_RXBQ', 1)
+            self._writeReg('RXBQ', 'DCRD_RXBQ', 0)            
             val = self._readReg('RXBQ', 'DC_RXBQ<6:0>')
             return self.signMagnitudeToInt(val, 7)
         else:
@@ -649,7 +672,8 @@ class LMS7002_DCCAL(LMS7002_base):
             val = self.intToSignMagnitude(value, 7)
             self._writeReg('RXBQ', 'DC_RXBQ<6:0>', val)
             self._writeReg('RXBQ', 'DCWR_RXBQ', 0)
-            self._writeReg('RXBQ', 'DCWR_RXBQ', 1)            
+            self._writeReg('RXBQ', 'DCWR_RXBQ', 1)
+            self._writeReg('RXBQ', 'DCWR_RXBQ', 0)            
         else:
             raise ValueError("Bitfield RXBQ is not supported on chip version "+str(self.chip.chipID))
 
