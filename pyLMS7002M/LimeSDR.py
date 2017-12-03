@@ -148,7 +148,7 @@ class LimeSDR(object):
             return cyLimeLib.getDeviceList()
             
     def log(self, logMsg):
-        print logMsg
+        print(logMsg)
 
     def getCommandNumber(self, cmdName):
         if cmdName == "CMD_GET_INFO":

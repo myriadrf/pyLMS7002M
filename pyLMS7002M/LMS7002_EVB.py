@@ -83,7 +83,7 @@ class LMS7002_EVB(object):
         return res            
             
     def log(self, logMsg):
-        print logMsg
+        print(logMsg)
 
     def getCommandNumber(self, cmdName):
         if cmdName == "CMD_GET_INFO":

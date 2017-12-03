@@ -302,7 +302,7 @@ class LMS7002(object):
 
     def log(self, msg, verboseLevel=0):
         if verboseLevel <= self.verbose:
-            print msg
+            print(msg)
 
     #
     # Auxiliary functions

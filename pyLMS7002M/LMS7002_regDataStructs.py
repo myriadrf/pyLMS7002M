@@ -212,7 +212,7 @@ class Register(object):
         return retVal
 
     def help(self):
-        print self.__REPR__()
+        print(self.__REPR__())
 
     def __str__(self,maxFieldNameWidth=20):
         self.refresh()
@@ -716,7 +716,7 @@ class regDescParser(object):
                 # Signal error and exit
                 raise ValueError( "Unknown construct : " + line  )
                 return
-        except Exception,error:
+        except Exception as error:
             retVal="("+str(self.nLine) + ") ERROR: "+str(error)
             raise ValueError(retVal)
 
@@ -939,8 +939,8 @@ class RegisterDefinition(object):
         else:
 #msavic 160606		
 #            raise ValueError("Register on address "+str(regAddr)+" not found")
-			warnings.warn("Register on address "+str(regAddr)+" not found")
-			return -1
+            warnings.warn("Register on address "+str(regAddr)+" not found")
+            return -1
 
     def getRegistersByName(self, regList="ALL"):
         if regList=="ALL":
