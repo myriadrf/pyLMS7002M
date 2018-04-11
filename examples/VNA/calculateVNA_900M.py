@@ -2,7 +2,7 @@ import numpy
 import os, sys
 
 if len(sys.argv)!=2 and len(sys.argv)!=3:
-    print("Usage: python calculateVNA.py measurementName [plotFigures]")
+    print("Usage: python calculateVNA_900M.py measurementName [plotFigures]")
     print("plotFigures is optional and can have values plot for plotting figures or save to plot and save the figures")
     exit(1)
 

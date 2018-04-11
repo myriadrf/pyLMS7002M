@@ -5,7 +5,7 @@ import os, sys
 from pyLMS7002M import *
 
 if len(sys.argv)!=2:
-    print("Usage: python measureVNA.py measurementName")
+    print("Usage: python measureVNA_900M.py measurementName")
     exit(1)
 
 startFreq = 800e6
