@@ -648,8 +648,8 @@ static const char *__pyx_f[] = {
 /*--- Type declarations ---*/
 struct __pyx_obj_9cyLimeLib_cyLimeLib;
 
-/* "cyLimeLib.pyx":7
- * # ctypedef  size_t uintptr_t
+/* "cyLimeLib.pyx":4
+ * cimport cyLimeLib
  * 
  * cdef class cyLimeLib:             # <<<<<<<<<<<<<<
  * 
@@ -883,6 +883,9 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint8_t(uint8_t value);
 
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint16_t(uint16_t value);
+
 /* CIntFromPy.proto */
 static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
 
@@ -894,6 +897,12 @@ static CYTHON_INLINE uint8_t __Pyx_PyInt_As_uint8_t(PyObject *);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE uint32_t __Pyx_PyInt_As_uint32_t(PyObject *);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE uint16_t __Pyx_PyInt_As_uint16_t(PyObject *);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
@@ -924,42 +933,56 @@ static const char __pyx_k_i[] = "i";
 static const char __pyx_k_n[] = "n";
 static const char __pyx_k_cmd[] = "cmd";
 static const char __pyx_k_res[] = "res";
+static const char __pyx_k_val[] = "val";
+static const char __pyx_k_chan[] = "chan";
 static const char __pyx_k_data[] = "data";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_index[] = "index";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_devStr[] = "devStr";
+static const char __pyx_k_dir_tx[] = "dir_tx";
+static const char __pyx_k_address[] = "address";
 static const char __pyx_k_devList[] = "devList";
 static const char __pyx_k_cyLimeLib[] = "cyLimeLib";
 static const char __pyx_k_ValueError[] = "ValueError";
 static const char __pyx_k_staticmethod[] = "staticmethod";
 static const char __pyx_k_getDeviceList[] = "getDeviceList";
 static const char __pyx_k_Max_56_bytes_per_packet[] = "Max 56 bytes per packet";
-static const char __pyx_k_d_Lime_Projects_LMS8001_svn_SW_P[] = "d:\\Lime\\Projects\\LMS8001\\svn\\SW\\Python_LMS7002\\pyLMS7002M\\cyLimeLib\\win\\cyLimeLib.pyx";
+static const char __pyx_k_d_Lime_Projects_MyriadRF_Reposit[] = "d:\\Lime\\Projects\\MyriadRF\\Repositories\\Work\\180417\\pyLMS7002M\\cyLimeLib\\win\\cyLimeLib.pyx";
 static PyObject *__pyx_n_s_I;
 static PyObject *__pyx_kp_s_Max_56_bytes_per_packet;
 static PyObject *__pyx_n_s_Q;
 static PyObject *__pyx_n_s_ValueError;
+static PyObject *__pyx_n_s_address;
+static PyObject *__pyx_n_s_chan;
 static PyObject *__pyx_n_s_cmd;
 static PyObject *__pyx_n_s_cyLimeLib;
-static PyObject *__pyx_kp_s_d_Lime_Projects_LMS8001_svn_SW_P;
+static PyObject *__pyx_kp_s_d_Lime_Projects_MyriadRF_Reposit;
 static PyObject *__pyx_n_s_data;
 static PyObject *__pyx_n_s_devList;
 static PyObject *__pyx_n_s_devStr;
+static PyObject *__pyx_n_s_dir_tx;
 static PyObject *__pyx_n_s_getDeviceList;
 static PyObject *__pyx_n_s_i;
+static PyObject *__pyx_n_s_index;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_n;
 static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_res;
 static PyObject *__pyx_n_s_staticmethod;
 static PyObject *__pyx_n_s_test;
+static PyObject *__pyx_n_s_val;
 static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_getDeviceList(); /* proto */
 static int __pyx_pf_9cyLimeLib_9cyLimeLib_2__cinit__(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self, PyObject *__pyx_v_devStr); /* proto */
 static void __pyx_pf_9cyLimeLib_9cyLimeLib_4__dealloc__(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_6transferLMS64C(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self, PyObject *__pyx_v_cmd, PyObject *__pyx_v_data); /* proto */
 static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_8UploadWFM(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self, PyObject *__pyx_v_iq); /* proto */
 static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_10getDevice(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_12LMSInit(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_14LMSReadLMSReg(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self, PyObject *__pyx_v_address); /* proto */
+static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_16LMSWriteLMSReg(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self, PyObject *__pyx_v_address, PyObject *__pyx_v_val); /* proto */
+static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_18LMSSetAntenna(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self, PyObject *__pyx_v_dir_tx, PyObject *__pyx_v_chan, PyObject *__pyx_v_index); /* proto */
 static PyObject *__pyx_tp_new_9cyLimeLib_cyLimeLib(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
@@ -967,7 +990,7 @@ static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_codeobj__3;
 
-/* "cyLimeLib.pyx":13
+/* "cyLimeLib.pyx":9
  * 
  *     @staticmethod
  *     def getDeviceList():             # <<<<<<<<<<<<<<
@@ -1006,7 +1029,7 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_getDeviceList() {
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("getDeviceList", 0);
 
-  /* "cyLimeLib.pyx":18
+  /* "cyLimeLib.pyx":14
  *         """
  *         cdef lms_info_str_t devList[8]
  *         n = LMS_GetDeviceList(devList)             # <<<<<<<<<<<<<<
@@ -1015,19 +1038,19 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_getDeviceList() {
  */
   __pyx_v_n = LMS_GetDeviceList(__pyx_v_devList);
 
-  /* "cyLimeLib.pyx":19
+  /* "cyLimeLib.pyx":15
  *         cdef lms_info_str_t devList[8]
  *         n = LMS_GetDeviceList(devList)
  *         res = []             # <<<<<<<<<<<<<<
  *         for i in range(0,n):
  *             res.append(devList[i])
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_res = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "cyLimeLib.pyx":20
+  /* "cyLimeLib.pyx":16
  *         n = LMS_GetDeviceList(devList)
  *         res = []
  *         for i in range(0,n):             # <<<<<<<<<<<<<<
@@ -1038,20 +1061,20 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_getDeviceList() {
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "cyLimeLib.pyx":21
+    /* "cyLimeLib.pyx":17
  *         res = []
  *         for i in range(0,n):
  *             res.append(devList[i])             # <<<<<<<<<<<<<<
  *         return res
  * 
  */
-    __pyx_t_1 = __Pyx_PyBytes_FromString((__pyx_v_devList[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyBytes_FromString((__pyx_v_devList[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyList_Append(__pyx_v_res, __pyx_t_1); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyList_Append(__pyx_v_res, __pyx_t_1); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 17, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "cyLimeLib.pyx":22
+  /* "cyLimeLib.pyx":18
  *         for i in range(0,n):
  *             res.append(devList[i])
  *         return res             # <<<<<<<<<<<<<<
@@ -1063,7 +1086,7 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_getDeviceList() {
   __pyx_r = __pyx_v_res;
   goto __pyx_L0;
 
-  /* "cyLimeLib.pyx":13
+  /* "cyLimeLib.pyx":9
  * 
  *     @staticmethod
  *     def getDeviceList():             # <<<<<<<<<<<<<<
@@ -1083,7 +1106,7 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_getDeviceList() {
   return __pyx_r;
 }
 
-/* "cyLimeLib.pyx":24
+/* "cyLimeLib.pyx":20
  *         return res
  * 
  *     def __cinit__(self, devStr=None):             # <<<<<<<<<<<<<<
@@ -1119,7 +1142,7 @@ static int __pyx_pw_9cyLimeLib_9cyLimeLib_3__cinit__(PyObject *__pyx_v_self, PyO
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 24, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 20, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -1132,7 +1155,7 @@ static int __pyx_pw_9cyLimeLib_9cyLimeLib_3__cinit__(PyObject *__pyx_v_self, PyO
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 24, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 20, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cyLimeLib.cyLimeLib.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1157,7 +1180,7 @@ static int __pyx_pf_9cyLimeLib_9cyLimeLib_2__cinit__(struct __pyx_obj_9cyLimeLib
   long __pyx_t_5;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "cyLimeLib.pyx":31
+  /* "cyLimeLib.pyx":27
  *         """
  *         cdef lms_info_str_t _devStr
  *         self._lms_device = <lms_device_t*>0             # <<<<<<<<<<<<<<
@@ -1166,19 +1189,19 @@ static int __pyx_pf_9cyLimeLib_9cyLimeLib_2__cinit__(struct __pyx_obj_9cyLimeLib
  */
   __pyx_v_self->_lms_device = ((lms_device_t *)0);
 
-  /* "cyLimeLib.pyx":32
+  /* "cyLimeLib.pyx":28
  *         cdef lms_info_str_t _devStr
  *         self._lms_device = <lms_device_t*>0
  *         if devStr == None:             # <<<<<<<<<<<<<<
  *             LMS_Open(&self._lms_device, NULL, NULL)
  *         else:
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_devStr, Py_None, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_devStr, Py_None, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "cyLimeLib.pyx":33
+    /* "cyLimeLib.pyx":29
  *         self._lms_device = <lms_device_t*>0
  *         if devStr == None:
  *             LMS_Open(&self._lms_device, NULL, NULL)             # <<<<<<<<<<<<<<
@@ -1187,7 +1210,7 @@ static int __pyx_pf_9cyLimeLib_9cyLimeLib_2__cinit__(struct __pyx_obj_9cyLimeLib
  */
     LMS_Open((&__pyx_v_self->_lms_device), NULL, NULL);
 
-    /* "cyLimeLib.pyx":32
+    /* "cyLimeLib.pyx":28
  *         cdef lms_info_str_t _devStr
  *         self._lms_device = <lms_device_t*>0
  *         if devStr == None:             # <<<<<<<<<<<<<<
@@ -1197,7 +1220,7 @@ static int __pyx_pf_9cyLimeLib_9cyLimeLib_2__cinit__(struct __pyx_obj_9cyLimeLib
     goto __pyx_L3;
   }
 
-  /* "cyLimeLib.pyx":35
+  /* "cyLimeLib.pyx":31
  *             LMS_Open(&self._lms_device, NULL, NULL)
  *         else:
  *             for i in range(0, len(devStr)):             # <<<<<<<<<<<<<<
@@ -1205,35 +1228,35 @@ static int __pyx_pf_9cyLimeLib_9cyLimeLib_2__cinit__(struct __pyx_obj_9cyLimeLib
  *             _devStr[len(devStr)] = 0
  */
   /*else*/ {
-    __pyx_t_3 = PyObject_Length(__pyx_v_devStr); if (unlikely(__pyx_t_3 == -1)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __pyx_t_3 = PyObject_Length(__pyx_v_devStr); if (unlikely(__pyx_t_3 == -1)) __PYX_ERR(0, 31, __pyx_L1_error)
     for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
       __pyx_v_i = __pyx_t_4;
 
-      /* "cyLimeLib.pyx":36
+      /* "cyLimeLib.pyx":32
  *         else:
  *             for i in range(0, len(devStr)):
  *                 _devStr[i] = <int>(ord(devStr[i]))             # <<<<<<<<<<<<<<
  *             _devStr[len(devStr)] = 0
  *             LMS_Open(&self._lms_device, _devStr, NULL)
  */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_devStr, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_devStr, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_PyObject_Ord(__pyx_t_1); if (unlikely(__pyx_t_5 == (long)(Py_UCS4)-1)) __PYX_ERR(0, 36, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Ord(__pyx_t_1); if (unlikely(__pyx_t_5 == (long)(Py_UCS4)-1)) __PYX_ERR(0, 32, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       (__pyx_v__devStr[__pyx_v_i]) = ((int)__pyx_t_5);
     }
 
-    /* "cyLimeLib.pyx":37
+    /* "cyLimeLib.pyx":33
  *             for i in range(0, len(devStr)):
  *                 _devStr[i] = <int>(ord(devStr[i]))
  *             _devStr[len(devStr)] = 0             # <<<<<<<<<<<<<<
  *             LMS_Open(&self._lms_device, _devStr, NULL)
  * 
  */
-    __pyx_t_3 = PyObject_Length(__pyx_v_devStr); if (unlikely(__pyx_t_3 == -1)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_3 = PyObject_Length(__pyx_v_devStr); if (unlikely(__pyx_t_3 == -1)) __PYX_ERR(0, 33, __pyx_L1_error)
     (__pyx_v__devStr[__pyx_t_3]) = 0;
 
-    /* "cyLimeLib.pyx":38
+    /* "cyLimeLib.pyx":34
  *                 _devStr[i] = <int>(ord(devStr[i]))
  *             _devStr[len(devStr)] = 0
  *             LMS_Open(&self._lms_device, _devStr, NULL)             # <<<<<<<<<<<<<<
@@ -1244,7 +1267,7 @@ static int __pyx_pf_9cyLimeLib_9cyLimeLib_2__cinit__(struct __pyx_obj_9cyLimeLib
   }
   __pyx_L3:;
 
-  /* "cyLimeLib.pyx":24
+  /* "cyLimeLib.pyx":20
  *         return res
  * 
  *     def __cinit__(self, devStr=None):             # <<<<<<<<<<<<<<
@@ -1264,7 +1287,7 @@ static int __pyx_pf_9cyLimeLib_9cyLimeLib_2__cinit__(struct __pyx_obj_9cyLimeLib
   return __pyx_r;
 }
 
-/* "cyLimeLib.pyx":40
+/* "cyLimeLib.pyx":36
  *             LMS_Open(&self._lms_device, _devStr, NULL)
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -1287,7 +1310,7 @@ static void __pyx_pf_9cyLimeLib_9cyLimeLib_4__dealloc__(struct __pyx_obj_9cyLime
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "cyLimeLib.pyx":45
+  /* "cyLimeLib.pyx":41
  *         Closes connection to the board.
  *         """
  *         LMS_Close(self._lms_device)             # <<<<<<<<<<<<<<
@@ -1296,7 +1319,7 @@ static void __pyx_pf_9cyLimeLib_9cyLimeLib_4__dealloc__(struct __pyx_obj_9cyLime
  */
   LMS_Close(__pyx_v_self->_lms_device);
 
-  /* "cyLimeLib.pyx":40
+  /* "cyLimeLib.pyx":36
  *             LMS_Open(&self._lms_device, _devStr, NULL)
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -1308,7 +1331,7 @@ static void __pyx_pf_9cyLimeLib_9cyLimeLib_4__dealloc__(struct __pyx_obj_9cyLime
   __Pyx_RefNannyFinishContext();
 }
 
-/* "cyLimeLib.pyx":47
+/* "cyLimeLib.pyx":43
  *         LMS_Close(self._lms_device)
  * 
  *     def transferLMS64C(self, cmd, data):             # <<<<<<<<<<<<<<
@@ -1344,11 +1367,11 @@ static PyObject *__pyx_pw_9cyLimeLib_9cyLimeLib_7transferLMS64C(PyObject *__pyx_
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_data)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("transferLMS64C", 1, 2, 2, 1); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("transferLMS64C", 1, 2, 2, 1); __PYX_ERR(0, 43, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "transferLMS64C") < 0)) __PYX_ERR(0, 47, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "transferLMS64C") < 0)) __PYX_ERR(0, 43, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1361,7 +1384,7 @@ static PyObject *__pyx_pw_9cyLimeLib_9cyLimeLib_7transferLMS64C(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("transferLMS64C", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 47, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("transferLMS64C", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 43, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("cyLimeLib.cyLimeLib.transferLMS64C", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1392,17 +1415,17 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_6transferLMS64C(struct __pyx_obj
   int __pyx_t_8;
   __Pyx_RefNannySetupContext("transferLMS64C", 0);
 
-  /* "cyLimeLib.pyx":49
+  /* "cyLimeLib.pyx":45
  *     def transferLMS64C(self, cmd, data):
  *         cdef uint8_t _data[56]
  *         cdef size_t dataLen = len(data)             # <<<<<<<<<<<<<<
  *         if dataLen>56:
  *             raise ValueError("Max 56 bytes per packet")
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_data); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(__pyx_v_data); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 45, __pyx_L1_error)
   __pyx_v_dataLen = __pyx_t_1;
 
-  /* "cyLimeLib.pyx":50
+  /* "cyLimeLib.pyx":46
  *         cdef uint8_t _data[56]
  *         cdef size_t dataLen = len(data)
  *         if dataLen>56:             # <<<<<<<<<<<<<<
@@ -1412,20 +1435,20 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_6transferLMS64C(struct __pyx_obj
   __pyx_t_2 = ((__pyx_v_dataLen > 56) != 0);
   if (__pyx_t_2) {
 
-    /* "cyLimeLib.pyx":51
+    /* "cyLimeLib.pyx":47
  *         cdef size_t dataLen = len(data)
  *         if dataLen>56:
  *             raise ValueError("Max 56 bytes per packet")             # <<<<<<<<<<<<<<
  *         for i in range(0, dataLen):
  *             _data[i] = data[i]
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 51, __pyx_L1_error)
+    __PYX_ERR(0, 47, __pyx_L1_error)
 
-    /* "cyLimeLib.pyx":50
+    /* "cyLimeLib.pyx":46
  *         cdef uint8_t _data[56]
  *         cdef size_t dataLen = len(data)
  *         if dataLen>56:             # <<<<<<<<<<<<<<
@@ -1434,7 +1457,7 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_6transferLMS64C(struct __pyx_obj
  */
   }
 
-  /* "cyLimeLib.pyx":52
+  /* "cyLimeLib.pyx":48
  *         if dataLen>56:
  *             raise ValueError("Max 56 bytes per packet")
  *         for i in range(0, dataLen):             # <<<<<<<<<<<<<<
@@ -1445,58 +1468,58 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_6transferLMS64C(struct __pyx_obj
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "cyLimeLib.pyx":53
+    /* "cyLimeLib.pyx":49
  *             raise ValueError("Max 56 bytes per packet")
  *         for i in range(0, dataLen):
  *             _data[i] = data[i]             # <<<<<<<<<<<<<<
  *         res = LMS_TransferLMS64C(self._lms_device, cmd, _data, &dataLen)
  *         res += 1
  */
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_data, __pyx_v_i, size_t, 0, __Pyx_PyInt_FromSize_t, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_data, __pyx_v_i, size_t, 0, __Pyx_PyInt_FromSize_t, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = __Pyx_PyInt_As_uint8_t(__pyx_t_3); if (unlikely((__pyx_t_6 == ((uint8_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 53, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_As_uint8_t(__pyx_t_3); if (unlikely((__pyx_t_6 == ((uint8_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 49, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     (__pyx_v__data[__pyx_v_i]) = __pyx_t_6;
   }
 
-  /* "cyLimeLib.pyx":54
+  /* "cyLimeLib.pyx":50
  *         for i in range(0, dataLen):
  *             _data[i] = data[i]
  *         res = LMS_TransferLMS64C(self._lms_device, cmd, _data, &dataLen)             # <<<<<<<<<<<<<<
  *         res += 1
  *         resData = []
  */
-  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_cmd); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 54, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyInt_From_int(LMS_TransferLMS64C(__pyx_v_self->_lms_device, __pyx_t_7, __pyx_v__data, (&__pyx_v_dataLen))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_cmd); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(LMS_TransferLMS64C(__pyx_v_self->_lms_device, __pyx_t_7, __pyx_v__data, (&__pyx_v_dataLen))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_res = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "cyLimeLib.pyx":55
+  /* "cyLimeLib.pyx":51
  *             _data[i] = data[i]
  *         res = LMS_TransferLMS64C(self._lms_device, cmd, _data, &dataLen)
  *         res += 1             # <<<<<<<<<<<<<<
  *         resData = []
  *         for i in range(0, dataLen):
  */
-  __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_res, __pyx_int_1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_res, __pyx_int_1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF_SET(__pyx_v_res, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "cyLimeLib.pyx":56
+  /* "cyLimeLib.pyx":52
  *         res = LMS_TransferLMS64C(self._lms_device, cmd, _data, &dataLen)
  *         res += 1
  *         resData = []             # <<<<<<<<<<<<<<
  *         for i in range(0, dataLen):
  *             resData.append(_data[i])
  */
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_resData = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "cyLimeLib.pyx":57
+  /* "cyLimeLib.pyx":53
  *         res += 1
  *         resData = []
  *         for i in range(0, dataLen):             # <<<<<<<<<<<<<<
@@ -1507,20 +1530,20 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_6transferLMS64C(struct __pyx_obj
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "cyLimeLib.pyx":58
+    /* "cyLimeLib.pyx":54
  *         resData = []
  *         for i in range(0, dataLen):
  *             resData.append(_data[i])             # <<<<<<<<<<<<<<
  *         return [res, resData]
  * 
  */
-    __pyx_t_3 = __Pyx_PyInt_From_uint8_t((__pyx_v__data[__pyx_v_i])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_uint8_t((__pyx_v__data[__pyx_v_i])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_resData, __pyx_t_3); if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_resData, __pyx_t_3); if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
 
-  /* "cyLimeLib.pyx":59
+  /* "cyLimeLib.pyx":55
  *         for i in range(0, dataLen):
  *             resData.append(_data[i])
  *         return [res, resData]             # <<<<<<<<<<<<<<
@@ -1528,7 +1551,7 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_6transferLMS64C(struct __pyx_obj
  *     def UploadWFM(self, iq):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyList_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_res);
   __Pyx_GIVEREF(__pyx_v_res);
@@ -1540,7 +1563,7 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_6transferLMS64C(struct __pyx_obj
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "cyLimeLib.pyx":47
+  /* "cyLimeLib.pyx":43
  *         LMS_Close(self._lms_device)
  * 
  *     def transferLMS64C(self, cmd, data):             # <<<<<<<<<<<<<<
@@ -1561,7 +1584,7 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_6transferLMS64C(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "cyLimeLib.pyx":61
+/* "cyLimeLib.pyx":57
  *         return [res, resData]
  * 
  *     def UploadWFM(self, iq):             # <<<<<<<<<<<<<<
@@ -1600,83 +1623,83 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_8UploadWFM(struct __pyx_obj_9cyL
   Py_ssize_t __pyx_t_7;
   __Pyx_RefNannySetupContext("UploadWFM", 0);
 
-  /* "cyLimeLib.pyx":63
+  /* "cyLimeLib.pyx":59
  *     def UploadWFM(self, iq):
  *         cdef complex16_t* src[2]
  *         I = iq.I             # <<<<<<<<<<<<<<
  *         Q = iq.Q
  *         nSamples = len(I)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_iq, __pyx_n_s_I); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_iq, __pyx_n_s_I); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_I = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "cyLimeLib.pyx":64
+  /* "cyLimeLib.pyx":60
  *         cdef complex16_t* src[2]
  *         I = iq.I
  *         Q = iq.Q             # <<<<<<<<<<<<<<
  *         nSamples = len(I)
  *         src[0] = <complex16_t*> malloc(nSamples * sizeof(complex16_t))
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_iq, __pyx_n_s_Q); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_iq, __pyx_n_s_Q); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_Q = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "cyLimeLib.pyx":65
+  /* "cyLimeLib.pyx":61
  *         I = iq.I
  *         Q = iq.Q
  *         nSamples = len(I)             # <<<<<<<<<<<<<<
  *         src[0] = <complex16_t*> malloc(nSamples * sizeof(complex16_t))
  *         src[1] = <complex16_t*> malloc(nSamples * sizeof(complex16_t))
  */
-  __pyx_t_2 = PyObject_Length(__pyx_v_I); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 65, __pyx_L1_error)
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_2 = PyObject_Length(__pyx_v_I); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_nSamples = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "cyLimeLib.pyx":66
+  /* "cyLimeLib.pyx":62
  *         Q = iq.Q
  *         nSamples = len(I)
  *         src[0] = <complex16_t*> malloc(nSamples * sizeof(complex16_t))             # <<<<<<<<<<<<<<
  *         src[1] = <complex16_t*> malloc(nSamples * sizeof(complex16_t))
  * 
  */
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t((sizeof(lime::complex16_t))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t((sizeof(lime::complex16_t))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_nSamples, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_nSamples, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_size_t(__pyx_t_3); if (unlikely((__pyx_t_4 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_size_t(__pyx_t_3); if (unlikely((__pyx_t_4 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_src[0]) = ((lime::complex16_t *)malloc(__pyx_t_4));
 
-  /* "cyLimeLib.pyx":67
+  /* "cyLimeLib.pyx":63
  *         nSamples = len(I)
  *         src[0] = <complex16_t*> malloc(nSamples * sizeof(complex16_t))
  *         src[1] = <complex16_t*> malloc(nSamples * sizeof(complex16_t))             # <<<<<<<<<<<<<<
  * 
  *         for i in range(0, nSamples):
  */
-  __pyx_t_3 = __Pyx_PyInt_FromSize_t((sizeof(lime::complex16_t))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_FromSize_t((sizeof(lime::complex16_t))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_nSamples, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_nSamples, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_size_t(__pyx_t_1); if (unlikely((__pyx_t_4 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_size_t(__pyx_t_1); if (unlikely((__pyx_t_4 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_src[1]) = ((lime::complex16_t *)malloc(__pyx_t_4));
 
-  /* "cyLimeLib.pyx":69
+  /* "cyLimeLib.pyx":65
  *         src[1] = <complex16_t*> malloc(nSamples * sizeof(complex16_t))
  * 
  *         for i in range(0, nSamples):             # <<<<<<<<<<<<<<
  *             src[0][i].i = I[i]
  *             src[0][i].q = Q[i]
  */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
@@ -1684,16 +1707,16 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_8UploadWFM(struct __pyx_obj_9cyL
   __Pyx_INCREF(__pyx_v_nSamples);
   __Pyx_GIVEREF(__pyx_v_nSamples);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_nSamples);
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
     __pyx_t_1 = __pyx_t_3; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -1701,17 +1724,17 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_8UploadWFM(struct __pyx_obj_9cyL
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -1721,7 +1744,7 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_8UploadWFM(struct __pyx_obj_9cyL
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 69, __pyx_L1_error)
+          else __PYX_ERR(0, 65, __pyx_L1_error)
         }
         break;
       }
@@ -1730,55 +1753,55 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_8UploadWFM(struct __pyx_obj_9cyL
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "cyLimeLib.pyx":70
+    /* "cyLimeLib.pyx":66
  * 
  *         for i in range(0, nSamples):
  *             src[0][i].i = I[i]             # <<<<<<<<<<<<<<
  *             src[0][i].q = Q[i]
  *             src[0][i].i = 0
  */
-    __pyx_t_3 = PyObject_GetItem(__pyx_v_I, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
+    __pyx_t_3 = PyObject_GetItem(__pyx_v_I, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 70, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_v_i); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 70, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_v_i); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 66, __pyx_L1_error)
     ((__pyx_v_src[0])[__pyx_t_7]).i = __pyx_t_6;
 
-    /* "cyLimeLib.pyx":71
+    /* "cyLimeLib.pyx":67
  *         for i in range(0, nSamples):
  *             src[0][i].i = I[i]
  *             src[0][i].q = Q[i]             # <<<<<<<<<<<<<<
  *             src[0][i].i = 0
  *             src[0][i].q = 0
  */
-    __pyx_t_3 = PyObject_GetItem(__pyx_v_Q, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
+    __pyx_t_3 = PyObject_GetItem(__pyx_v_Q, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 71, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_v_i); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 71, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_v_i); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 67, __pyx_L1_error)
     ((__pyx_v_src[0])[__pyx_t_7]).q = __pyx_t_6;
 
-    /* "cyLimeLib.pyx":72
+    /* "cyLimeLib.pyx":68
  *             src[0][i].i = I[i]
  *             src[0][i].q = Q[i]
  *             src[0][i].i = 0             # <<<<<<<<<<<<<<
  *             src[0][i].q = 0
  * 
  */
-    __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_v_i); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_v_i); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 68, __pyx_L1_error)
     ((__pyx_v_src[0])[__pyx_t_7]).i = 0;
 
-    /* "cyLimeLib.pyx":73
+    /* "cyLimeLib.pyx":69
  *             src[0][i].q = Q[i]
  *             src[0][i].i = 0
  *             src[0][i].q = 0             # <<<<<<<<<<<<<<
  * 
  *         status = LMS_UploadWFM(self._lms_device, <const void**>src, 2, nSamples, 0)
  */
-    __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_v_i); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 73, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_v_i); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L1_error)
     ((__pyx_v_src[0])[__pyx_t_7]).q = 0;
 
-    /* "cyLimeLib.pyx":69
+    /* "cyLimeLib.pyx":65
  *         src[1] = <complex16_t*> malloc(nSamples * sizeof(complex16_t))
  * 
  *         for i in range(0, nSamples):             # <<<<<<<<<<<<<<
@@ -1788,17 +1811,17 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_8UploadWFM(struct __pyx_obj_9cyL
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cyLimeLib.pyx":75
+  /* "cyLimeLib.pyx":71
  *             src[0][i].q = 0
  * 
  *         status = LMS_UploadWFM(self._lms_device, <const void**>src, 2, nSamples, 0)             # <<<<<<<<<<<<<<
  * 
  *         free(src[0])
  */
-  __pyx_t_4 = __Pyx_PyInt_As_size_t(__pyx_v_nSamples); if (unlikely((__pyx_t_4 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_size_t(__pyx_v_nSamples); if (unlikely((__pyx_t_4 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 71, __pyx_L1_error)
   __pyx_v_status = LMS_UploadWFM(__pyx_v_self->_lms_device, ((void const **)__pyx_v_src), 2, __pyx_t_4, 0);
 
-  /* "cyLimeLib.pyx":77
+  /* "cyLimeLib.pyx":73
  *         status = LMS_UploadWFM(self._lms_device, <const void**>src, 2, nSamples, 0)
  * 
  *         free(src[0])             # <<<<<<<<<<<<<<
@@ -1807,16 +1830,16 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_8UploadWFM(struct __pyx_obj_9cyL
  */
   free((__pyx_v_src[0]));
 
-  /* "cyLimeLib.pyx":78
+  /* "cyLimeLib.pyx":74
  * 
  *         free(src[0])
  *         free(src[1])             # <<<<<<<<<<<<<<
  * 
- *     # milans 170307
+ *     def getDevice(self):
  */
   free((__pyx_v_src[1]));
 
-  /* "cyLimeLib.pyx":61
+  /* "cyLimeLib.pyx":57
  *         return [res, resData]
  * 
  *     def UploadWFM(self, iq):             # <<<<<<<<<<<<<<
@@ -1842,12 +1865,12 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_8UploadWFM(struct __pyx_obj_9cyL
   return __pyx_r;
 }
 
-/* "cyLimeLib.pyx":81
+/* "cyLimeLib.pyx":76
+ *         free(src[1])
  * 
- *     # milans 170307
  *     def getDevice(self):             # <<<<<<<<<<<<<<
- *         # device = c_void_p()
- *         # device = self._lms_device
+ *         return <uintptr_t>self._lms_device
+ * 
  */
 
 /* Python wrapper */
@@ -1869,31 +1892,378 @@ static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_10getDevice(struct __pyx_obj_9cy
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getDevice", 0);
 
-  /* "cyLimeLib.pyx":89
- *         #device = self._lms_device
- *         #return <object>device
+  /* "cyLimeLib.pyx":77
+ * 
+ *     def getDevice(self):
  *         return <uintptr_t>self._lms_device             # <<<<<<<<<<<<<<
  * 
+ *     def LMSInit(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t(((uintptr_t)__pyx_v_self->_lms_device)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t(((uintptr_t)__pyx_v_self->_lms_device)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "cyLimeLib.pyx":81
+  /* "cyLimeLib.pyx":76
+ *         free(src[1])
  * 
- *     # milans 170307
  *     def getDevice(self):             # <<<<<<<<<<<<<<
- *         # device = c_void_p()
- *         # device = self._lms_device
+ *         return <uintptr_t>self._lms_device
+ * 
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_AddTraceback("cyLimeLib.cyLimeLib.getDevice", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "cyLimeLib.pyx":79
+ *         return <uintptr_t>self._lms_device
+ * 
+ *     def LMSInit(self):             # <<<<<<<<<<<<<<
+ *         LMS_Init(self._lms_device)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9cyLimeLib_9cyLimeLib_13LMSInit(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_9cyLimeLib_9cyLimeLib_13LMSInit(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("LMSInit (wrapper)", 0);
+  __pyx_r = __pyx_pf_9cyLimeLib_9cyLimeLib_12LMSInit(((struct __pyx_obj_9cyLimeLib_cyLimeLib *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_12LMSInit(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("LMSInit", 0);
+
+  /* "cyLimeLib.pyx":80
+ * 
+ *     def LMSInit(self):
+ *         LMS_Init(self._lms_device)             # <<<<<<<<<<<<<<
+ * 
+ *     def LMSReadLMSReg(self, address):
+ */
+  LMS_Init(__pyx_v_self->_lms_device);
+
+  /* "cyLimeLib.pyx":79
+ *         return <uintptr_t>self._lms_device
+ * 
+ *     def LMSInit(self):             # <<<<<<<<<<<<<<
+ *         LMS_Init(self._lms_device)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "cyLimeLib.pyx":82
+ *         LMS_Init(self._lms_device)
+ * 
+ *     def LMSReadLMSReg(self, address):             # <<<<<<<<<<<<<<
+ *         cdef uint16_t val
+ *         LMS_ReadLMSReg(self._lms_device, address, &val)
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9cyLimeLib_9cyLimeLib_15LMSReadLMSReg(PyObject *__pyx_v_self, PyObject *__pyx_v_address); /*proto*/
+static PyObject *__pyx_pw_9cyLimeLib_9cyLimeLib_15LMSReadLMSReg(PyObject *__pyx_v_self, PyObject *__pyx_v_address) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("LMSReadLMSReg (wrapper)", 0);
+  __pyx_r = __pyx_pf_9cyLimeLib_9cyLimeLib_14LMSReadLMSReg(((struct __pyx_obj_9cyLimeLib_cyLimeLib *)__pyx_v_self), ((PyObject *)__pyx_v_address));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_14LMSReadLMSReg(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self, PyObject *__pyx_v_address) {
+  uint16_t __pyx_v_val;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  uint32_t __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  __Pyx_RefNannySetupContext("LMSReadLMSReg", 0);
+
+  /* "cyLimeLib.pyx":84
+ *     def LMSReadLMSReg(self, address):
+ *         cdef uint16_t val
+ *         LMS_ReadLMSReg(self._lms_device, address, &val)             # <<<<<<<<<<<<<<
+ *         return val
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyInt_As_uint32_t(__pyx_v_address); if (unlikely((__pyx_t_1 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 84, __pyx_L1_error)
+  LMS_ReadLMSReg(__pyx_v_self->_lms_device, __pyx_t_1, (&__pyx_v_val));
+
+  /* "cyLimeLib.pyx":85
+ *         cdef uint16_t val
+ *         LMS_ReadLMSReg(self._lms_device, address, &val)
+ *         return val             # <<<<<<<<<<<<<<
+ * 
+ *     def LMSWriteLMSReg(self, address, val):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = __Pyx_PyInt_From_uint16_t(__pyx_v_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* "cyLimeLib.pyx":82
+ *         LMS_Init(self._lms_device)
+ * 
+ *     def LMSReadLMSReg(self, address):             # <<<<<<<<<<<<<<
+ *         cdef uint16_t val
+ *         LMS_ReadLMSReg(self._lms_device, address, &val)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("cyLimeLib.cyLimeLib.LMSReadLMSReg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "cyLimeLib.pyx":87
+ *         return val
+ * 
+ *     def LMSWriteLMSReg(self, address, val):             # <<<<<<<<<<<<<<
+ *         LMS_WriteLMSReg(self._lms_device, address, val)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9cyLimeLib_9cyLimeLib_17LMSWriteLMSReg(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_9cyLimeLib_9cyLimeLib_17LMSWriteLMSReg(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_address = 0;
+  PyObject *__pyx_v_val = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("LMSWriteLMSReg (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_address,&__pyx_n_s_val,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_address)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        case  1:
+        if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_val)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("LMSWriteLMSReg", 1, 2, 2, 1); __PYX_ERR(0, 87, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "LMSWriteLMSReg") < 0)) __PYX_ERR(0, 87, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+    }
+    __pyx_v_address = values[0];
+    __pyx_v_val = values[1];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("LMSWriteLMSReg", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 87, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("cyLimeLib.cyLimeLib.LMSWriteLMSReg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_9cyLimeLib_9cyLimeLib_16LMSWriteLMSReg(((struct __pyx_obj_9cyLimeLib_cyLimeLib *)__pyx_v_self), __pyx_v_address, __pyx_v_val);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_16LMSWriteLMSReg(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self, PyObject *__pyx_v_address, PyObject *__pyx_v_val) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  uint32_t __pyx_t_1;
+  uint16_t __pyx_t_2;
+  __Pyx_RefNannySetupContext("LMSWriteLMSReg", 0);
+
+  /* "cyLimeLib.pyx":88
+ * 
+ *     def LMSWriteLMSReg(self, address, val):
+ *         LMS_WriteLMSReg(self._lms_device, address, val)             # <<<<<<<<<<<<<<
+ * 
+ *     def LMSSetAntenna(self, dir_tx, chan, index):
+ */
+  __pyx_t_1 = __Pyx_PyInt_As_uint32_t(__pyx_v_address); if (unlikely((__pyx_t_1 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_uint16_t(__pyx_v_val); if (unlikely((__pyx_t_2 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 88, __pyx_L1_error)
+  LMS_WriteLMSReg(__pyx_v_self->_lms_device, __pyx_t_1, __pyx_t_2);
+
+  /* "cyLimeLib.pyx":87
+ *         return val
+ * 
+ *     def LMSWriteLMSReg(self, address, val):             # <<<<<<<<<<<<<<
+ *         LMS_WriteLMSReg(self._lms_device, address, val)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("cyLimeLib.cyLimeLib.LMSWriteLMSReg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "cyLimeLib.pyx":90
+ *         LMS_WriteLMSReg(self._lms_device, address, val)
+ * 
+ *     def LMSSetAntenna(self, dir_tx, chan, index):             # <<<<<<<<<<<<<<
+ *         return LMS_SetAntenna(self._lms_device, dir_tx, chan, index)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9cyLimeLib_9cyLimeLib_19LMSSetAntenna(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_9cyLimeLib_9cyLimeLib_19LMSSetAntenna(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_dir_tx = 0;
+  PyObject *__pyx_v_chan = 0;
+  PyObject *__pyx_v_index = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("LMSSetAntenna (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_dir_tx,&__pyx_n_s_chan,&__pyx_n_s_index,0};
+    PyObject* values[3] = {0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_dir_tx)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        case  1:
+        if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_chan)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("LMSSetAntenna", 1, 3, 3, 1); __PYX_ERR(0, 90, __pyx_L3_error)
+        }
+        case  2:
+        if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_index)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("LMSSetAntenna", 1, 3, 3, 2); __PYX_ERR(0, 90, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "LMSSetAntenna") < 0)) __PYX_ERR(0, 90, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+    }
+    __pyx_v_dir_tx = values[0];
+    __pyx_v_chan = values[1];
+    __pyx_v_index = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("LMSSetAntenna", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 90, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("cyLimeLib.cyLimeLib.LMSSetAntenna", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_9cyLimeLib_9cyLimeLib_18LMSSetAntenna(((struct __pyx_obj_9cyLimeLib_cyLimeLib *)__pyx_v_self), __pyx_v_dir_tx, __pyx_v_chan, __pyx_v_index);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9cyLimeLib_9cyLimeLib_18LMSSetAntenna(struct __pyx_obj_9cyLimeLib_cyLimeLib *__pyx_v_self, PyObject *__pyx_v_dir_tx, PyObject *__pyx_v_chan, PyObject *__pyx_v_index) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  size_t __pyx_t_2;
+  size_t __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
+  __Pyx_RefNannySetupContext("LMSSetAntenna", 0);
+
+  /* "cyLimeLib.pyx":91
+ * 
+ *     def LMSSetAntenna(self, dir_tx, chan, index):
+ *         return LMS_SetAntenna(self._lms_device, dir_tx, chan, index)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_dir_tx); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_size_t(__pyx_v_chan); if (unlikely((__pyx_t_2 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_size_t(__pyx_v_index); if (unlikely((__pyx_t_3 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(LMS_SetAntenna(__pyx_v_self->_lms_device, __pyx_t_1, __pyx_t_2, __pyx_t_3)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
+  goto __pyx_L0;
+
+  /* "cyLimeLib.pyx":90
+ *         LMS_WriteLMSReg(self._lms_device, address, val)
+ * 
+ *     def LMSSetAntenna(self, dir_tx, chan, index):             # <<<<<<<<<<<<<<
+ *         return LMS_SetAntenna(self._lms_device, dir_tx, chan, index)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("cyLimeLib.cyLimeLib.LMSSetAntenna", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1938,6 +2308,10 @@ static PyMethodDef __pyx_methods_9cyLimeLib_cyLimeLib[] = {
   {"transferLMS64C", (PyCFunction)__pyx_pw_9cyLimeLib_9cyLimeLib_7transferLMS64C, METH_VARARGS|METH_KEYWORDS, 0},
   {"UploadWFM", (PyCFunction)__pyx_pw_9cyLimeLib_9cyLimeLib_9UploadWFM, METH_O, 0},
   {"getDevice", (PyCFunction)__pyx_pw_9cyLimeLib_9cyLimeLib_11getDevice, METH_NOARGS, 0},
+  {"LMSInit", (PyCFunction)__pyx_pw_9cyLimeLib_9cyLimeLib_13LMSInit, METH_NOARGS, 0},
+  {"LMSReadLMSReg", (PyCFunction)__pyx_pw_9cyLimeLib_9cyLimeLib_15LMSReadLMSReg, METH_O, 0},
+  {"LMSWriteLMSReg", (PyCFunction)__pyx_pw_9cyLimeLib_9cyLimeLib_17LMSWriteLMSReg, METH_VARARGS|METH_KEYWORDS, 0},
+  {"LMSSetAntenna", (PyCFunction)__pyx_pw_9cyLimeLib_9cyLimeLib_19LMSSetAntenna, METH_VARARGS|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 
@@ -2026,26 +2400,31 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_Max_56_bytes_per_packet, __pyx_k_Max_56_bytes_per_packet, sizeof(__pyx_k_Max_56_bytes_per_packet), 0, 0, 1, 0},
   {&__pyx_n_s_Q, __pyx_k_Q, sizeof(__pyx_k_Q), 0, 0, 1, 1},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
+  {&__pyx_n_s_address, __pyx_k_address, sizeof(__pyx_k_address), 0, 0, 1, 1},
+  {&__pyx_n_s_chan, __pyx_k_chan, sizeof(__pyx_k_chan), 0, 0, 1, 1},
   {&__pyx_n_s_cmd, __pyx_k_cmd, sizeof(__pyx_k_cmd), 0, 0, 1, 1},
   {&__pyx_n_s_cyLimeLib, __pyx_k_cyLimeLib, sizeof(__pyx_k_cyLimeLib), 0, 0, 1, 1},
-  {&__pyx_kp_s_d_Lime_Projects_LMS8001_svn_SW_P, __pyx_k_d_Lime_Projects_LMS8001_svn_SW_P, sizeof(__pyx_k_d_Lime_Projects_LMS8001_svn_SW_P), 0, 0, 1, 0},
+  {&__pyx_kp_s_d_Lime_Projects_MyriadRF_Reposit, __pyx_k_d_Lime_Projects_MyriadRF_Reposit, sizeof(__pyx_k_d_Lime_Projects_MyriadRF_Reposit), 0, 0, 1, 0},
   {&__pyx_n_s_data, __pyx_k_data, sizeof(__pyx_k_data), 0, 0, 1, 1},
   {&__pyx_n_s_devList, __pyx_k_devList, sizeof(__pyx_k_devList), 0, 0, 1, 1},
   {&__pyx_n_s_devStr, __pyx_k_devStr, sizeof(__pyx_k_devStr), 0, 0, 1, 1},
+  {&__pyx_n_s_dir_tx, __pyx_k_dir_tx, sizeof(__pyx_k_dir_tx), 0, 0, 1, 1},
   {&__pyx_n_s_getDeviceList, __pyx_k_getDeviceList, sizeof(__pyx_k_getDeviceList), 0, 0, 1, 1},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
+  {&__pyx_n_s_index, __pyx_k_index, sizeof(__pyx_k_index), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_n, __pyx_k_n, sizeof(__pyx_k_n), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
   {&__pyx_n_s_res, __pyx_k_res, sizeof(__pyx_k_res), 0, 0, 1, 1},
   {&__pyx_n_s_staticmethod, __pyx_k_staticmethod, sizeof(__pyx_k_staticmethod), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+  {&__pyx_n_s_val, __pyx_k_val, sizeof(__pyx_k_val), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 12, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 20, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 47, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -2055,28 +2434,28 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "cyLimeLib.pyx":51
+  /* "cyLimeLib.pyx":47
  *         cdef size_t dataLen = len(data)
  *         if dataLen>56:
  *             raise ValueError("Max 56 bytes per packet")             # <<<<<<<<<<<<<<
  *         for i in range(0, dataLen):
  *             _data[i] = data[i]
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Max_56_bytes_per_packet); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Max_56_bytes_per_packet); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "cyLimeLib.pyx":13
+  /* "cyLimeLib.pyx":9
  * 
  *     @staticmethod
  *     def getDeviceList():             # <<<<<<<<<<<<<<
  *         """
  *         Static method to get the list of devices
  */
-  __pyx_tuple__2 = PyTuple_Pack(4, __pyx_n_s_devList, __pyx_n_s_n, __pyx_n_s_res, __pyx_n_s_i); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(4, __pyx_n_s_devList, __pyx_n_s_n, __pyx_n_s_res, __pyx_n_s_i); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(0, 0, 4, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_d_Lime_Projects_LMS8001_svn_SW_P, __pyx_n_s_getDeviceList, 13, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(0, 0, 4, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_d_Lime_Projects_MyriadRF_Reposit, __pyx_n_s_getDeviceList, 9, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -2178,9 +2557,9 @@ PyMODINIT_FUNC PyInit_cyLimeLib(void)
   /*--- Variable export code ---*/
   /*--- Function export code ---*/
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_9cyLimeLib_cyLimeLib) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9cyLimeLib_cyLimeLib) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __pyx_type_9cyLimeLib_cyLimeLib.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "cyLimeLib", (PyObject *)&__pyx_type_9cyLimeLib_cyLimeLib) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "cyLimeLib", (PyObject *)&__pyx_type_9cyLimeLib_cyLimeLib) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __pyx_ptype_9cyLimeLib_cyLimeLib = &__pyx_type_9cyLimeLib_cyLimeLib;
   /*--- Type import code ---*/
   /*--- Variable import code ---*/
@@ -2190,68 +2569,68 @@ PyMODINIT_FUNC PyInit_cyLimeLib(void)
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "cyLimeLib.pyx":13
+  /* "cyLimeLib.pyx":9
  * 
  *     @staticmethod
  *     def getDeviceList():             # <<<<<<<<<<<<<<
  *         """
  *         Static method to get the list of devices
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9cyLimeLib_9cyLimeLib_1getDeviceList, NULL, __pyx_n_s_cyLimeLib); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9cyLimeLib_9cyLimeLib_1getDeviceList, NULL, __pyx_n_s_cyLimeLib); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "cyLimeLib.pyx":12
- *     # cdef public lms_device_t* _lms_device
+  /* "cyLimeLib.pyx":8
+ *     cdef lms_device_t* _lms_device
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def getDeviceList():
  *         """
  */
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_staticmethod, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_staticmethod, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_9cyLimeLib_cyLimeLib->tp_dict, __pyx_n_s_getDeviceList, __pyx_t_1) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_9cyLimeLib_cyLimeLib->tp_dict, __pyx_n_s_getDeviceList, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_9cyLimeLib_cyLimeLib);
 
-  /* "cyLimeLib.pyx":13
+  /* "cyLimeLib.pyx":9
  * 
  *     @staticmethod
  *     def getDeviceList():             # <<<<<<<<<<<<<<
  *         """
  *         Static method to get the list of devices
  */
-  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_9cyLimeLib_cyLimeLib, __pyx_n_s_getDeviceList); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_9cyLimeLib_cyLimeLib, __pyx_n_s_getDeviceList); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "cyLimeLib.pyx":12
- *     # cdef public lms_device_t* _lms_device
+  /* "cyLimeLib.pyx":8
+ *     cdef lms_device_t* _lms_device
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def getDeviceList():
  *         """
  */
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_staticmethod, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_staticmethod, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_9cyLimeLib_cyLimeLib->tp_dict, __pyx_n_s_getDeviceList, __pyx_t_1) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_9cyLimeLib_cyLimeLib->tp_dict, __pyx_n_s_getDeviceList, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_9cyLimeLib_cyLimeLib);
 
   /* "cyLimeLib.pyx":1
  * from libc.stdlib cimport malloc, free             # <<<<<<<<<<<<<<
  * cimport cyLimeLib
- * # milans 170307
+ * 
  */
   __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -3231,6 +3610,37 @@ bad:
     }
 }
 
+/* CIntToPy */
+    static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint16_t(uint16_t value) {
+    const uint16_t neg_one = (uint16_t) -1, const_zero = (uint16_t) 0;
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(uint16_t) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(uint16_t) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(uint16_t) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(uint16_t) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(uint16_t) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(uint16_t),
+                                     little, !is_unsigned);
+    }
+}
+
 /* CIntFromPy */
     static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {
     const long neg_one = (long) -1, const_zero = (long) 0;
@@ -3985,6 +4395,384 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to int");
     return (int) -1;
+}
+
+/* CIntFromPy */
+    static CYTHON_INLINE uint32_t __Pyx_PyInt_As_uint32_t(PyObject *x) {
+    const uint32_t neg_one = (uint32_t) -1, const_zero = (uint32_t) 0;
+    const int is_unsigned = neg_one > const_zero;
+#if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_Check(x))) {
+        if (sizeof(uint32_t) < sizeof(long)) {
+            __PYX_VERIFY_RETURN_INT(uint32_t, long, PyInt_AS_LONG(x))
+        } else {
+            long val = PyInt_AS_LONG(x);
+            if (is_unsigned && unlikely(val < 0)) {
+                goto raise_neg_overflow;
+            }
+            return (uint32_t) val;
+        }
+    } else
+#endif
+    if (likely(PyLong_Check(x))) {
+        if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (uint32_t) 0;
+                case  1: __PYX_VERIFY_RETURN_INT(uint32_t, digit, digits[0])
+                case 2:
+                    if (8 * sizeof(uint32_t) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) >= 2 * PyLong_SHIFT) {
+                            return (uint32_t) (((((uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(uint32_t) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) >= 3 * PyLong_SHIFT) {
+                            return (uint32_t) (((((((uint32_t)digits[2]) << PyLong_SHIFT) | (uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(uint32_t) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) >= 4 * PyLong_SHIFT) {
+                            return (uint32_t) (((((((((uint32_t)digits[3]) << PyLong_SHIFT) | (uint32_t)digits[2]) << PyLong_SHIFT) | (uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0]));
+                        }
+                    }
+                    break;
+            }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON
+            if (unlikely(Py_SIZE(x) < 0)) {
+                goto raise_neg_overflow;
+            }
+#else
+            {
+                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+                if (unlikely(result < 0))
+                    return (uint32_t) -1;
+                if (unlikely(result == 1))
+                    goto raise_neg_overflow;
+            }
+#endif
+            if (sizeof(uint32_t) <= sizeof(unsigned long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint32_t, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(uint32_t) <= sizeof(unsigned PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint32_t, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+            }
+        } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (uint32_t) 0;
+                case -1: __PYX_VERIFY_RETURN_INT(uint32_t, sdigit, (sdigit) (-(sdigit)digits[0]))
+                case  1: __PYX_VERIFY_RETURN_INT(uint32_t,  digit, +digits[0])
+                case -2:
+                    if (8 * sizeof(uint32_t) - 1 > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) - 1 > 2 * PyLong_SHIFT) {
+                            return (uint32_t) (((uint32_t)-1)*(((((uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if (8 * sizeof(uint32_t) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) - 1 > 2 * PyLong_SHIFT) {
+                            return (uint32_t) ((((((uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if (8 * sizeof(uint32_t) - 1 > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) - 1 > 3 * PyLong_SHIFT) {
+                            return (uint32_t) (((uint32_t)-1)*(((((((uint32_t)digits[2]) << PyLong_SHIFT) | (uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(uint32_t) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) - 1 > 3 * PyLong_SHIFT) {
+                            return (uint32_t) ((((((((uint32_t)digits[2]) << PyLong_SHIFT) | (uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if (8 * sizeof(uint32_t) - 1 > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) - 1 > 4 * PyLong_SHIFT) {
+                            return (uint32_t) (((uint32_t)-1)*(((((((((uint32_t)digits[3]) << PyLong_SHIFT) | (uint32_t)digits[2]) << PyLong_SHIFT) | (uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(uint32_t) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) - 1 > 4 * PyLong_SHIFT) {
+                            return (uint32_t) ((((((((((uint32_t)digits[3]) << PyLong_SHIFT) | (uint32_t)digits[2]) << PyLong_SHIFT) | (uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0])));
+                        }
+                    }
+                    break;
+            }
+#endif
+            if (sizeof(uint32_t) <= sizeof(long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint32_t, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(uint32_t) <= sizeof(PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint32_t, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+            }
+        }
+        {
+#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
+            PyErr_SetString(PyExc_RuntimeError,
+                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
+#else
+            uint32_t val;
+            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
+ #if PY_MAJOR_VERSION < 3
+            if (likely(v) && !PyLong_Check(v)) {
+                PyObject *tmp = v;
+                v = PyNumber_Long(tmp);
+                Py_DECREF(tmp);
+            }
+ #endif
+            if (likely(v)) {
+                int one = 1; int is_little = (int)*(unsigned char *)&one;
+                unsigned char *bytes = (unsigned char *)&val;
+                int ret = _PyLong_AsByteArray((PyLongObject *)v,
+                                              bytes, sizeof(val),
+                                              is_little, !is_unsigned);
+                Py_DECREF(v);
+                if (likely(!ret))
+                    return val;
+            }
+#endif
+            return (uint32_t) -1;
+        }
+    } else {
+        uint32_t val;
+        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
+        if (!tmp) return (uint32_t) -1;
+        val = __Pyx_PyInt_As_uint32_t(tmp);
+        Py_DECREF(tmp);
+        return val;
+    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to uint32_t");
+    return (uint32_t) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to uint32_t");
+    return (uint32_t) -1;
+}
+
+/* CIntFromPy */
+    static CYTHON_INLINE uint16_t __Pyx_PyInt_As_uint16_t(PyObject *x) {
+    const uint16_t neg_one = (uint16_t) -1, const_zero = (uint16_t) 0;
+    const int is_unsigned = neg_one > const_zero;
+#if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_Check(x))) {
+        if (sizeof(uint16_t) < sizeof(long)) {
+            __PYX_VERIFY_RETURN_INT(uint16_t, long, PyInt_AS_LONG(x))
+        } else {
+            long val = PyInt_AS_LONG(x);
+            if (is_unsigned && unlikely(val < 0)) {
+                goto raise_neg_overflow;
+            }
+            return (uint16_t) val;
+        }
+    } else
+#endif
+    if (likely(PyLong_Check(x))) {
+        if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (uint16_t) 0;
+                case  1: __PYX_VERIFY_RETURN_INT(uint16_t, digit, digits[0])
+                case 2:
+                    if (8 * sizeof(uint16_t) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint16_t) >= 2 * PyLong_SHIFT) {
+                            return (uint16_t) (((((uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(uint16_t) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint16_t) >= 3 * PyLong_SHIFT) {
+                            return (uint16_t) (((((((uint16_t)digits[2]) << PyLong_SHIFT) | (uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(uint16_t) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint16_t) >= 4 * PyLong_SHIFT) {
+                            return (uint16_t) (((((((((uint16_t)digits[3]) << PyLong_SHIFT) | (uint16_t)digits[2]) << PyLong_SHIFT) | (uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0]));
+                        }
+                    }
+                    break;
+            }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON
+            if (unlikely(Py_SIZE(x) < 0)) {
+                goto raise_neg_overflow;
+            }
+#else
+            {
+                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+                if (unlikely(result < 0))
+                    return (uint16_t) -1;
+                if (unlikely(result == 1))
+                    goto raise_neg_overflow;
+            }
+#endif
+            if (sizeof(uint16_t) <= sizeof(unsigned long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint16_t, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(uint16_t) <= sizeof(unsigned PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint16_t, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+            }
+        } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (uint16_t) 0;
+                case -1: __PYX_VERIFY_RETURN_INT(uint16_t, sdigit, (sdigit) (-(sdigit)digits[0]))
+                case  1: __PYX_VERIFY_RETURN_INT(uint16_t,  digit, +digits[0])
+                case -2:
+                    if (8 * sizeof(uint16_t) - 1 > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint16_t) - 1 > 2 * PyLong_SHIFT) {
+                            return (uint16_t) (((uint16_t)-1)*(((((uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if (8 * sizeof(uint16_t) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint16_t) - 1 > 2 * PyLong_SHIFT) {
+                            return (uint16_t) ((((((uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if (8 * sizeof(uint16_t) - 1 > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint16_t) - 1 > 3 * PyLong_SHIFT) {
+                            return (uint16_t) (((uint16_t)-1)*(((((((uint16_t)digits[2]) << PyLong_SHIFT) | (uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(uint16_t) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint16_t) - 1 > 3 * PyLong_SHIFT) {
+                            return (uint16_t) ((((((((uint16_t)digits[2]) << PyLong_SHIFT) | (uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if (8 * sizeof(uint16_t) - 1 > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint16_t) - 1 > 4 * PyLong_SHIFT) {
+                            return (uint16_t) (((uint16_t)-1)*(((((((((uint16_t)digits[3]) << PyLong_SHIFT) | (uint16_t)digits[2]) << PyLong_SHIFT) | (uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(uint16_t) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint16_t) - 1 > 4 * PyLong_SHIFT) {
+                            return (uint16_t) ((((((((((uint16_t)digits[3]) << PyLong_SHIFT) | (uint16_t)digits[2]) << PyLong_SHIFT) | (uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0])));
+                        }
+                    }
+                    break;
+            }
+#endif
+            if (sizeof(uint16_t) <= sizeof(long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint16_t, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(uint16_t) <= sizeof(PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint16_t, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+            }
+        }
+        {
+#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
+            PyErr_SetString(PyExc_RuntimeError,
+                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
+#else
+            uint16_t val;
+            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
+ #if PY_MAJOR_VERSION < 3
+            if (likely(v) && !PyLong_Check(v)) {
+                PyObject *tmp = v;
+                v = PyNumber_Long(tmp);
+                Py_DECREF(tmp);
+            }
+ #endif
+            if (likely(v)) {
+                int one = 1; int is_little = (int)*(unsigned char *)&one;
+                unsigned char *bytes = (unsigned char *)&val;
+                int ret = _PyLong_AsByteArray((PyLongObject *)v,
+                                              bytes, sizeof(val),
+                                              is_little, !is_unsigned);
+                Py_DECREF(v);
+                if (likely(!ret))
+                    return val;
+            }
+#endif
+            return (uint16_t) -1;
+        }
+    } else {
+        uint16_t val;
+        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
+        if (!tmp) return (uint16_t) -1;
+        val = __Pyx_PyInt_As_uint16_t(tmp);
+        Py_DECREF(tmp);
+        return val;
+    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to uint16_t");
+    return (uint16_t) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to uint16_t");
+    return (uint16_t) -1;
 }
 
 /* CIntToPy */

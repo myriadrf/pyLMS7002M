@@ -1,3 +1,13 @@
+# IMPORTANT
+
+pyLMS7002M package is now obsolete.
+Please use https://github.com/myriadrf/pyLMS7002Soapy.
+
+# Last release updates
+
+* LimeSDR Mini supported
+* LO frequency can be tuned down to 30 MHz
+
 # LMS7002M Python package
 
 The pyLMS7002M Python package is platform-independent, and is intended for fast prototyping
@@ -6,6 +16,7 @@ for controlling the LMS7002M chip and evaluation boards. Supported evaluation bo
 
 * LMS7002_EVB
 * LimeSDR
+* LimeSDR Mini
 
 The package consists of Python classes which correspond to physical or logical entities. For
 example, each module of LMS7002M (AFE, SXT, TRF, ...) is a class. The LMS7002M chip is also a

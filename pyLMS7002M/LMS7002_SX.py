@@ -1053,8 +1053,8 @@ class LMS7002_SX(LMS7002_base):
         Calculates FF-DIV Modulus. Calls VCO Corse Tuning Method. Configures PLL in LMS7002.
         """
         F_REF = self.chip.fRef   # get the chip reference frequency
-        if not (0.24e9<=F_LO<=3.8e9):
-             raise ValueError("Not Valid LO Frequency. 240 MHz< F_LO < 3.8 GHz")
+        if not (0.03e9<=F_LO<=3.8e9):
+             raise ValueError("Not Valid LO Frequency. 30 MHz< F_LO < 3.8 GHz")
         
         if (PD_TLOBUF_CTUNE):
             PD_TXMIXA=self.chip.TRF['A'].PD_TLOBUF_TRF

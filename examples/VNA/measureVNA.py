@@ -108,23 +108,38 @@ def adjustRxGain(lms7002):
     RxTSP.GC_BYP = 'USE'
     RxTSP.GCORRQ = 0
 
-    pgaGain = 31
-    lnaGain = 8
-    
-    dGain = 0.01
-    dOffs = 200
-    
-    for pgaGain in range(30,1,-1):
-        RBB.G_PGA_RBB = pgaGain
+    pgaGain = 0
+    pgaStep = 16
+
+    if isMini:
+        lnaGain = 6
+    else:
+        lnaGain = 8
+
+    while pgaStep>0:
+        RBB.G_PGA_RBB = pgaGain + pgaStep
         RFE.G_LNA_RFE = lnaGain
-        rssi = []
-        for iq in [0x1000,0x2000, 0x6FFF, 0x7FFF]:
-            TxTSP.loadDCIQ(iq, 65535-iq)
-            rssi.append(RxTSP.RSSI)
-        # Check if response is linear
-        if abs((rssi[1]-rssi[0])-(rssi[3]-rssi[2]))<dGain*(rssi[1]-rssi[0])+dOffs:
-            # ADC is not saturating
-            break
+        if mcuRSSI()<50e3:
+            pgaGain += pgaStep
+        pgaStep = pgaStep/2
+
+#    pgaGain = 16
+#    lnaGain = 8
+#    
+#    dGain = 0.01
+#    dOffs = 200
+#    
+#    for pgaGain in range(30,1,-1):
+#        RBB.G_PGA_RBB = pgaGain
+#        RFE.G_LNA_RFE = lnaGain
+#        rssi = []
+#        for iq in [0x1000,0x2000, 0x6FFF, 0x7FFF]:
+#            TxTSP.loadDCIQ(iq, 65535-iq)
+#            rssi.append(RxTSP.RSSI)
+#        # Check if response is linear
+#        if abs((rssi[1]-rssi[0])-(rssi[3]-rssi[2]))<dGain*(rssi[1]-rssi[0])+dOffs:
+#            # ADC is not saturating
+#            break
             
     RBB.G_PGA_RBB = pgaGain
     RFE.G_LNA_RFE = lnaGain    
@@ -140,9 +155,16 @@ def adjustRxGain(lms7002):
     
 #################################################################
     
-logTxt("Searching for LimeSDR... ", end="")
+try:
+    logTxt("Searching for LimeSDR... ", end="")
+    limeSDR = LimeSDR()
+    isMini = False
+except:
+    logTxt("\nSearching for LimeSDRMini... ", end="")
+    limeSDR = LimeSDRMini()
+    isMini = True
 
-limeSDR = LimeSDR()
+
 limeSDR.LMS7002_Reset()
 lms7002 = limeSDR.getLMS7002()
 lms7002.MIMO = 'MIMO'
@@ -171,7 +193,10 @@ calThreshold = 500  # RSSI threshold to trigger RX DC calibration
 
 RBB = lms7002.RBB['A']
 TBB = lms7002.TBB['A']
-TBB.CG_IAMP_TBB=35
+if isMini:
+    TBB.CG_IAMP_TBB=5
+else:
+    TBB.CG_IAMP_TBB=15
 
 RxTSP = lms7002.RxTSP['A']
 RxTSP.GCORRQ = 2047
@@ -192,29 +217,40 @@ Q = 0x8000
 TxTSP.loadDCIQ(I, Q)
 
 TxNCO = lms7002.NCO["TXA"]
-NCOfreq = 100e3
+NCOfreq = 50e3
 TxNCO.MODE = 0
 TxNCO.setNCOFrequency(0, NCOfreq)
 TxNCO.SEL = 0
 
 TRF = lms7002.TRF['A']
-TRF.LOSS_MAIN_TXPAD_TRF = 0 
 TRF.EN_LOOPB_TXPAD_TRF = 0
 TRF.L_LOOPB_TXPAD_TRF = 0    
 TRF.PD_TLOBUF_TRF = 0
-TRF.SEL_BAND1_TRF = 0
-TRF.SEL_BAND2_TRF = 1
+if isMini:
+    TRF.LOSS_MAIN_TXPAD_TRF = 0
+    TRF.SEL_BAND1_TRF = 1
+    TRF.SEL_BAND2_TRF = 0
+    limeSDR.cyDev.LMSSetAntenna(1,0,1)
+    limeSDR.cyDev.LMSSetAntenna(0,0,1)    
+else:
+    TRF.LOSS_MAIN_TXPAD_TRF = 0 
+    TRF.SEL_BAND1_TRF = 0
+    TRF.SEL_BAND2_TRF = 1
 
 RFE = lms7002.RFE['A']
 
+lms7002.SX['R'].EN_G = 0
 lms7002.SX['T'].PD_LOCH_T2RBUF = 0  # Both RX and TX use the TX PLL
 
 mcuProgram()    # Load the program to MCU SRAM
 
 print("Calibrating RX path...")
 
-lnaGain=15
-pgaGain = 31
+if isMini:
+    lnaGain = 6
+else:
+    lnaGain = 8
+pgaGain = 16
 
 TRF.PD_TXPAD_TRF = 1    # Turn off TXPAD while calibrating RX DC
 cal.rxDCLO('A', LNA, lnaGain=lnaGain, pgaGain=pgaGain)  # Calibrate RX DC

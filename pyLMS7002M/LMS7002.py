@@ -181,9 +181,9 @@ class LMS7002(object):
         self.MIMO = 'MIMO'
         
         self.CGEN.ICT_VCO_CGEN = 16
-        self.BIAS.PD_LDO_SPIBUF = 1
-        self.BIAS.PD_LDO_DIGIp2 = 1
-        self.BIAS.PD_LDO_DIGIp1 = 1
+        #self.BIAS.PD_LDO_SPIBUF = 1
+        #self.BIAS.PD_LDO_DIGIp2 = 1
+        #self.BIAS.PD_LDO_DIGIp1 = 1
         
         self.TBB['A'].ICT_IAMP_FRP_TBB = 1
         self.TBB['A'].ICT_IAMP_GG_FRP_TBB = 6

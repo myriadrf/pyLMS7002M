@@ -25,6 +25,11 @@ class boardUSB(object):
         if dev==None:
             dev = usb.core.find(idVendor=0x1d50, idProduct=0x6108)
         return dev
+      
+    @staticmethod
+    def findLimeSDRMini():
+        dev = usb.core.find(idVendor=0x0403, idProduct=0x601f)
+        return dev      
 
     def getEndpoints(self):
         """

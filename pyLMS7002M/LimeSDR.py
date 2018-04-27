@@ -56,7 +56,7 @@ class LimeSDR(object):
                 raise ValueError("LimeSDR not found")
             self.cyDev = None
             for i in range(0,len(boards)):
-                if "LimeSDR" in boards[i]:
+                if "LimeSDR" in boards[i] and not("Mini" in boards[i]):
                     self.cyDev = cyLimeLib(boards[i])
                     break
             if self.cyDev==None:

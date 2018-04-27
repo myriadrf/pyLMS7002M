@@ -4,7 +4,6 @@ cimport cyLimeLib
 cdef class cyLimeLib:
 
     cdef lms_device_t* _lms_device
-    # cdef public lms_device_t* _lms_device
     
     @staticmethod
     def getDeviceList():
@@ -76,4 +75,19 @@ cdef class cyLimeLib:
 
     def getDevice(self):
         return <uintptr_t>self._lms_device
+
+    def LMSInit(self):
+        LMS_Init(self._lms_device)
+        
+    def LMSReadLMSReg(self, address):
+        cdef uint16_t val
+        LMS_ReadLMSReg(self._lms_device, address, &val)
+        return val
+        
+    def LMSWriteLMSReg(self, address, val):
+        LMS_WriteLMSReg(self._lms_device, address, val)        
+
+    def LMSSetAntenna(self, dir_tx, chan, index):
+        return LMS_SetAntenna(self._lms_device, dir_tx, chan, index)
+        
         
